@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= title || "Add Download" %></title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div>
+                <h5>Bishnu Palika</h5>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="admin-menu">
+
+            <a href="/admin/dashboard" class="admin-menu-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/admin/notices" class="admin-menu-link">
+                <i class="bi bi-megaphone-fill"></i>
+                <span>Notices</span>
+            </a>
+
+            <a href="/admin/news" class="admin-menu-link">
+                <i class="bi bi-newspaper"></i>
+                <span>News & Events</span>
+            </a>
+
+            <a href="/admin/services" class="admin-menu-link">
+                <i class="bi bi-person-workspace"></i>
+                <span>Services</span>
+            </a>
+
+            <a href="/admin/wards" class="admin-menu-link">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Wards</span>
+            </a>
+
+            <a href="/admin/downloads" class="admin-menu-link active">
+                <i class="bi bi-download"></i>
+                <span>Downloads</span>
+            </a>
+
+            <a href="/admin/gallery" class="admin-menu-link">
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="/admin/slider" class="admin-menu-link">
+                <i class="bi bi-sliders"></i>
+                <span>Homepage Slider</span>
+            </a>
+
+
+            <div class="admin-menu-title">
+                SETTINGS
+            </div>
+
+
+            <a href="/admin/profile" class="admin-menu-link">
+                <i class="bi bi-person-circle"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="/admin/settings" class="admin-menu-link">
+                <i class="bi bi-gear-fill"></i>
+                <span>Settings</span>
+            </a>
+
+            <a
+                href="/"
+                target="_blank"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="/admin/login">
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="admin-main">
+
+        <!-- TOPBAR -->
+
+        <div class="admin-topbar">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button
+                    type="button"
+                    class="admin-mobile-menu"
+                    onclick="toggleAdminSidebar()"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div>
+
+                    <h4>
+                        <%= mode === "edit" ? "Edit Download" : "Add Download" %>
+                    </h4>
+
+                    <p>
+                        <%= mode === "edit"
+                            ? "Update downloadable document information"
+                            : "Upload a new document for citizens"
+                        %>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div class="d-none d-sm-block">
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Super Admin
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="admin-content">
+
+            <!-- Breadcrumb -->
+
+            <div class="admin-breadcrumb mb-4">
+
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <a href="/admin/downloads">
+                    Downloads
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    <%= mode === "edit" ? "Edit" : "Add" %>
+                </span>
+
+            </div>
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="admin-form-title">
+
+                <h5>
+                    <%= mode === "edit"
+                        ? "Edit Download Document"
+                        : "Add New Download Document"
+                    %>
+                </h5>
+
+                <p>
+                    Provide the document details and upload the file.
+                </p>
+
+            </div>
+
+
+            <form
+                action="#"
+                method="POST"
+                enctype="multipart/form-data"
+                onsubmit="saveDownload(event)"
+            >
+
+                <div class="row g-4">
+
+                    <!-- ================= LEFT ================= -->
+
+                    <div class="col-lg-8">
+
+
+                        <!-- BASIC INFORMATION -->
+
+                        <div class="admin-section-card mb-4">
+
+                            <div class="admin-section-header">
+
+                                <div>
+
+                                    <h5>
+                                        Basic Information
+                                    </h5>
+
+                                    <p>
+                                        Enter information about the document.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Title -->
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Document Title
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="documentTitle"
+                                    class="form-control"
+                                    placeholder="e.g. Annual Budget 2082/83"
+                                    value="<%= mode === 'edit' ? 'Annual Budget 2082/83' : '' %>"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="row g-3">
+
+
+                                <!-- Category -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Category
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <select
+                                        id="documentCategory"
+                                        class="form-select"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Category
+                                        </option>
+
+                                        <option
+                                            <%= mode === "edit" ? "selected" : "" %>
+                                        >
+                                            Forms
+                                        </option>
+
+                                        <option>
+                                            Budget
+                                        </option>
+
+                                        <option>
+                                            Policies
+                                        </option>
+
+                                        <option>
+                                            Reports
+                                        </option>
+
+                                        <option>
+                                            Procurement
+                                        </option>
+
+                                        <option>
+                                            Citizen Charter
+                                        </option>
+
+                                        <option>
+                                            Plans
+                                        </option>
+
+                                        <option>
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Date -->
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Publication Date
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="publicationDate"
+                                        class="form-control"
+                                        value="<%= mode === 'edit' ? '2025-08-15' : '' %>"
+                                        required
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <div class="mt-4">
+
+                                <label class="form-label">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="documentDescription"
+                                    class="form-control download-description-editor"
+                                    placeholder="Write a short description about this document..."
+                                ><%= mode === "edit" ? "This document contains important information for citizens." : "" %></textarea>
+
+                                <div class="form-text">
+                                    Briefly explain what this document contains.
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FILE UPLOAD -->
+
+                        <div class="admin-section-card mb-4">
+
+                            <div class="admin-section-header">
+
+                                <div>
+
+                                    <h5>
+                                        Document File
+                                    </h5>
+
+                                    <p>
+                                        Upload the file citizens will download.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="download-upload-box">
+
+                                <i class="bi bi-cloud-arrow-up"></i>
+
+                                <h6>
+                                    Upload Document
+                                </h6>
+
+                                <p>
+                                    PDF, DOC, DOCX, XLS, XLSX or image files
+                                </p>
+
+                                <p class="small text-muted">
+                                    Recommended maximum size: 10 MB
+                                </p>
+
+
+                                <label class="btn btn-primary">
+
+                                    <i class="bi bi-folder2-open me-1"></i>
+
+                                    Choose File
+
+                                    <input
+                                        type="file"
+                                        id="documentFile"
+                                        class="d-none"
+                                        accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+                                        onchange="previewDownloadFile(event)"
+                                    >
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- Selected file -->
+
+                            <div
+                                id="selectedFileBox"
+                                class="selected-download-file d-none mt-3"
+                            >
+
+                                <div
+                                    class="download-file-icon pdf"
+                                    id="selectedFileIcon"
+                                >
+                                    <i class="bi bi-file-earmark"></i>
+                                </div>
+
+                                <div class="flex-grow-1">
+
+                                    <strong id="selectedFileName">
+                                        Document.pdf
+                                    </strong>
+
+                                    <small id="selectedFileSize">
+                                        0 KB
+                                    </small>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="removeSelectedFile()"
+                                >
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+
+                            </div>
+
+
+                            <!-- Existing file in edit -->
+
+                            <% if (mode === "edit") { %>
+
+                                <div class="existing-download-file mt-3">
+
+                                    <div class="download-file-icon pdf">
+                                        <i class="bi bi-file-earmark-pdf-fill"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <small>
+                                            Current File
+                                        </small>
+
+                                        <strong>
+                                            annual-budget-2082-83.pdf
+                                        </strong>
+
+                                    </div>
+
+                                    <span class="badge bg-success-subtle text-success">
+                                        Uploaded
+                                    </span>
+
+                                </div>
+
+                            <% } %>
+
+                        </div>
+
+
+                        <!-- EXTERNAL URL -->
+
+                        <div class="admin-section-card mb-4">
+
+                            <div class="admin-section-header">
+
+                                <div>
+
+                                    <h5>
+                                        External File URL
+                                    </h5>
+
+                                    <p>
+                                        Optional alternative to uploading a file.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="form-label">
+                                File URL
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-link-45deg"></i>
+                                </span>
+
+                                <input
+                                    type="url"
+                                    class="form-control"
+                                    placeholder="https://example.com/document.pdf"
+                                >
+
+                            </div>
+
+                            <div class="form-text">
+
+                                Use this only when the document is hosted on
+                                another trusted server.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="admin-section-card">
+
+                            <div class="admin-section-header">
+
+                                <div>
+
+                                    <h5>
+                                        Publishing
+                                    </h5>
+
+                                    <p>
+                                        Control document visibility.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Status
+                                    </label>
+
+                                    <select
+                                        id="documentStatus"
+                                        class="form-select"
+                                        onchange="updateDownloadStatus()"
+                                    >
+
+                                        <option value="published"
+                                            <%= mode !== "edit" ? "selected" : "" %>
+                                        >
+                                            Published
+                                        </option>
+
+                                        <option value="draft"
+                                            <%= mode === "edit" ? "" : "" %>
+                                        >
+                                            Draft
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-md-6 d-flex align-items-end">
+
+                                    <div class="form-check form-switch">
+
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            id="importantDocument"
+                                        >
+
+                                        <label
+                                            class="form-check-label"
+                                            for="importantDocument"
+                                        >
+                                            Mark as Important
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= RIGHT ================= -->
+
+                    <div class="col-lg-4">
+
+
+                        <!-- PREVIEW -->
+
+                        <div class="admin-section-card mb-4">
+
+                            <div class="admin-section-header">
+
+                                <div>
+
+                                    <h5>
+                                        Preview
+                                    </h5>
+
+                                    <p>
+                                        How the document may appear.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="download-preview-card">
+
+                                <div
+                                    class="download-preview-icon"
+                                    id="previewFileIcon"
+                                >
+                                    <i class="bi bi-file-earmark-pdf-fill"></i>
+                                </div>
+
+
+                                <span
+                                    id="previewCategory"
+                                    class="admin-category-badge"
+                                >
+                                    Document
+                                </span>
+
+
+                                <h5 id="previewTitle">
+                                    <%= mode === "edit"
+                                        ? "Annual Budget 2082/83"
+                                        : "Document Title"
+                                    %>
+                                </h5>
+
+
+                                <p id="previewDescription">
+                                    Document description will appear here.
+                                </p>
+
+
+                                <div class="download-preview-divider"></div>
+
+
+                                <div class="download-preview-info">
+
+                                    <div>
+                                        <i class="bi bi-calendar3"></i>
+                                        <span>Date</span>
+                                    </div>
+
+                                    <strong id="previewDate">
+                                        Not selected
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="download-preview-info">
+
+                                    <div>
+                                        <i class="bi bi-file-earmark"></i>
+                                        <span>File</span>
+                                    </div>
+
+                                    <strong id="previewType">
+                                        PDF
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="download-preview-status"
+                                    id="downloadStatusPreview"
+                                >
+
+                                    <i class="bi bi-check-circle-fill"></i>
+
+                                    <span>
+                                        Published
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PUBLISHING GUIDE -->
+
+                        <div class="admin-section-card">
+
+                            <div class="admin-section-header">
+
+                                <div>
+
+                                    <h5>
+                                        Publishing Guide
+                                    </h5>
+
+                                    <p>
+                                        Before publishing.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-file-earmark-check"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Check the file
+                                    </strong>
+
+                                    <p>
+                                        Make sure the uploaded document
+                                        opens correctly.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-card-heading"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Use a clear title
+                                    </strong>
+
+                                    <p>
+                                        Citizens should understand the
+                                        document from its title.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-folder-check"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Select the category
+                                    </strong>
+
+                                    <p>
+                                        Correct categorization makes
+                                        searching easier.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-shield-check"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Verify before publishing
+                                    </strong>
+
+                                    <p>
+                                        Avoid uploading confidential or
+                                        incorrect documents.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= BUTTONS ================= -->
+
+                <div class="d-flex flex-wrap justify-content-between gap-3 mt-4">
+
+                    <a
+                        href="/admin/downloads"
+                        class="btn btn-outline-secondary"
+                    >
+                        <i class="bi bi-arrow-left me-1"></i>
+                        Cancel
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+
+                        <i class="bi bi-check-lg me-1"></i>
+
+                        <%= mode === "edit"
+                            ? "Update Download"
+                            : "Save Download"
+                        %>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+
+/* ================= FILE PREVIEW ================= */
+
+function previewDownloadFile(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+
+
+    const fileBox = document.getElementById("selectedFileBox");
+    const fileName = document.getElementById("selectedFileName");
+    const fileSize = document.getElementById("selectedFileSize");
+    const fileIcon = document.getElementById("selectedFileIcon");
+
+
+    fileBox.classList.remove("d-none");
+
+    fileName.textContent = file.name;
+
+    fileSize.textContent = formatFileSize(file.size);
+
+
+    const extension = getExtension(file.name);
+
+    setFileIcon(fileIcon, extension);
+
+
+    /* Update preview */
+
+    const previewIcon =
+        document.getElementById("previewFileIcon");
+
+    const previewType =
+        document.getElementById("previewType");
+
+
+    previewType.textContent =
+        extension.toUpperCase();
+
+    setFileIcon(previewIcon, extension);
+
+}
+
+
+/* ================= REMOVE FILE ================= */
+
+function removeSelectedFile() {
+
+    const input =
+        document.getElementById("documentFile");
+
+    const box =
+        document.getElementById("selectedFileBox");
+
+
+    input.value = "";
+
+    box.classList.add("d-none");
+
+}
+
+
+/* ================= EXTENSION ================= */
+
+function getExtension(filename) {
+
+    const parts = filename.split(".");
+
+    if (parts.length < 2) {
+        return "file";
+    }
+
+    return parts.pop().toLowerCase();
+
+}
+
+
+/* ================= FILE SIZE ================= */
+
+function formatFileSize(bytes) {
+
+    if (bytes === 0) {
+        return "0 KB";
+    }
+
+    const units = [
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+    const index =
+        Math.floor(
+            Math.log(bytes) / Math.log(1024)
+        );
+
+    return (
+        parseFloat(
+            (bytes / Math.pow(1024, index))
+                .toFixed(2)
+        )
+        + " "
+        + units[index]
+    );
+
+}
+
+
+/* ================= FILE ICON ================= */
+
+function setFileIcon(element, extension) {
+
+    element.className =
+        "download-file-icon";
+
+
+    const icon =
+        element.querySelector("i");
+
+
+    if (extension === "pdf") {
+
+        element.classList.add("pdf");
+
+        icon.className =
+            "bi bi-file-earmark-pdf-fill";
+
+    }
+
+    else if (
+        extension === "doc" ||
+        extension === "docx"
+    ) {
+
+        element.classList.add("docx");
+
+        icon.className =
+            "bi bi-file-earmark-word-fill";
+
+    }
+
+    else if (
+        extension === "xls" ||
+        extension === "xlsx"
+    ) {
+
+        element.classList.add("xlsx");
+
+        icon.className =
+            "bi bi-file-earmark-excel-fill";
+
+    }
+
+    else if (
+        extension === "jpg" ||
+        extension === "jpeg" ||
+        extension === "png"
+    ) {
+
+        element.classList.add("image");
+
+        icon.className =
+            "bi bi-file-earmark-image-fill";
+
+    }
+
+    else {
+
+        element.classList.add("other");
+
+        icon.className =
+            "bi bi-file-earmark-fill";
+
+    }
+
+}
+
+
+/* ================= TITLE PREVIEW ================= */
+
+document
+    .getElementById("documentTitle")
+    .addEventListener("input", function () {
+
+        const title =
+            this.value.trim();
+
+        document
+            .getElementById("previewTitle")
+            .textContent =
+            title || "Document Title";
+
+    });
+
+
+/* ================= DESCRIPTION PREVIEW ================= */
+
+document
+    .getElementById("documentDescription")
+    .addEventListener("input", function () {
+
+        const description =
+            this.value.trim();
+
+        document
+            .getElementById("previewDescription")
+            .textContent =
+            description ||
+            "Document description will appear here.";
+
+    });
+
+
+/* ================= CATEGORY PREVIEW ================= */
+
+document
+    .getElementById("documentCategory")
+    .addEventListener("change", function () {
+
+        document
+            .getElementById("previewCategory")
+            .textContent =
+            this.value || "Document";
+
+    });
+
+
+/* ================= DATE PREVIEW ================= */
+
+document
+    .getElementById("publicationDate")
+    .addEventListener("change", function () {
+
+        if (!this.value) {
+
+            document
+                .getElementById("previewDate")
+                .textContent =
+                "Not selected";
+
+            return;
+
+        }
+
+
+        const date =
+            new Date(this.value);
+
+
+        const formatted =
+            date.toLocaleDateString(
+                "en-GB",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+
+        document
+            .getElementById("previewDate")
+            .textContent =
+            formatted;
+
+    });
+
+
+/* ================= STATUS ================= */
+
+function updateDownloadStatus() {
+
+    const status =
+        document.getElementById("documentStatus").value;
+
+    const preview =
+        document.getElementById("downloadStatusPreview");
+
+
+    if (status === "published") {
+
+        preview.className =
+            "download-preview-status published";
+
+        preview.innerHTML = `
+            <i class="bi bi-check-circle-fill"></i>
+            <span>Published</span>
+        `;
+
+    }
+
+    else {
+
+        preview.className =
+            "download-preview-status draft";
+
+        preview.innerHTML = `
+            <i class="bi bi-pencil-square"></i>
+            <span>Draft</span>
+        `;
+
+    }
+
+}
+
+
+/* ================= SAVE ================= */
+
+function saveDownload(event) {
+
+    event.preventDefault();
+
+
+    const title =
+        document
+            .getElementById("documentTitle")
+            .value.trim();
+
+
+    if (!title) {
+
+        alert("Please enter the document title.");
+
+        return;
+
+    }
+
+
+    alert(
+        "<%= mode === 'edit' ? 'Frontend demo: download would be updated successfully.' : 'Frontend demo: download would be saved successfully.' %>"
+    );
+
+
+    window.location.href =
+        "/admin/downloads";
+
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

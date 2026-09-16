@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= title || "Ward Form" %></title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="admin-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div>
+                <h5>Bishnu Palika</h5>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="admin-menu">
+
+            <a
+                href="/admin/dashboard"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="/admin/notices"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-megaphone-fill"></i>
+                <span>Notices</span>
+            </a>
+
+
+            <a
+                href="/admin/news"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-newspaper"></i>
+                <span>News & Events</span>
+            </a>
+
+
+            <a
+                href="/admin/services"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-person-workspace"></i>
+                <span>Services</span>
+            </a>
+
+
+            <a
+                href="/admin/wards"
+                class="admin-menu-link active"
+            >
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Wards</span>
+            </a>
+
+
+            <a
+                href="/admin/downloads"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-download"></i>
+                <span>Downloads</span>
+            </a>
+
+
+            <a
+                href="/admin/gallery"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
+            </a>
+
+
+            <a
+                href="/admin/slider"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-sliders"></i>
+                <span>Homepage Slider</span>
+            </a>
+
+
+            <div class="admin-menu-title">
+                SETTINGS
+            </div>
+
+
+            <a
+                href="/admin/profile"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-person-circle"></i>
+                <span>Profile</span>
+            </a>
+
+
+            <a
+                href="/admin/settings"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-gear-fill"></i>
+                <span>Settings</span>
+            </a>
+
+
+            <a
+                href="/"
+                target="_blank"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="/admin/login">
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="admin-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="admin-topbar">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button
+                    class="admin-mobile-menu"
+                    onclick="toggleAdminSidebar()"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+
+                <div>
+
+                    <h4>
+
+                        <%= mode === "edit"
+                            ? "Edit Ward"
+                            : "Add Ward"
+                        %>
+
+                    </h4>
+
+                    <p>
+
+                        <%= mode === "edit"
+                            ? "Update ward information"
+                            : "Create a new ward profile"
+                        %>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Super Admin
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="admin-content">
+
+
+            <!-- BREADCRUMB -->
+
+            <div class="admin-breadcrumb mb-4">
+
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <a href="/admin/wards">
+                    Wards
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+
+                    <%= mode === "edit"
+                        ? "Edit Ward"
+                        : "Add Ward"
+                    %>
+
+                </span>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form
+                action="#"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+
+                <div class="row g-4">
+
+
+                    <!-- ================= LEFT ================= -->
+
+                    <div class="col-lg-8">
+
+
+                        <!-- BASIC INFORMATION -->
+
+                        <div class="admin-section-card mb-4">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Ward Information
+                                </h5>
+
+                                <p>
+                                    Enter the basic information of the ward.
+                                </p>
+
+                            </div>
+
+
+                            <div class="row g-3">
+
+
+                                <!-- WARD NUMBER -->
+
+                                <div class="col-md-4">
+
+                                    <label class="form-label">
+
+                                        Ward Number
+
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+
+                                    </label>
+
+
+                                    <select class="form-select">
+
+                                        <option value="">
+                                            Select Ward
+                                        </option>
+
+                                        <% for(let i = 1; i <= 12; i++) { %>
+
+                                            <option
+                                                value="<%= i %>"
+                                                <%= mode === "edit" && i === 1 ? "selected" : "" %>
+                                            >
+                                                Ward No. <%= i %>
+                                            </option>
+
+                                        <% } %>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- WARD NAME -->
+
+                                <div class="col-md-8">
+
+                                    <label class="form-label">
+
+                                        Ward Name
+
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="e.g. Bishnu Ward Office"
+                                        value="<%= mode === 'edit' ? 'Ward No. 1 Office' : '' %>"
+                                    >
+
+                                </div>
+
+
+                                <!-- SHORT DESCRIPTION -->
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Short Description
+                                    </label>
+
+
+                                    <textarea
+                                        class="form-control"
+                                        rows="3"
+                                        placeholder="Write a short description about this ward..."
+                                    ><%= mode === "edit" ? "Information and citizen services for Ward No. 1." : "" %></textarea>
+
+                                </div>
+
+
+                                <!-- FULL DESCRIPTION -->
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Detailed Description
+                                    </label>
+
+
+                                    <textarea
+                                        class="form-control ward-description-editor"
+                                        rows="8"
+                                        placeholder="Write detailed information about this ward..."
+                                    ><%= mode === "edit" ? "Ward No. 1 provides various municipal and citizen services to local residents. Citizens can contact the ward office for registration, recommendations and other local government services." : "" %></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CHAIRPERSON -->
+
+                        <div class="admin-section-card mb-4">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Ward Chairperson
+                                </h5>
+
+                                <p>
+                                    Enter the information of the ward chairperson.
+                                </p>
+
+                            </div>
+
+
+                            <div class="row g-3">
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Full Name
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Chairperson full name"
+                                        value="<%= mode === 'edit' ? 'Ram Bahadur' : '' %>"
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Position
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        value="Ward Chairperson"
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Contact Number
+                                    </label>
+
+
+                                    <input
+                                        type="tel"
+                                        class="form-control"
+                                        placeholder="98XXXXXXXX"
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Email Address
+                                    </label>
+
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        placeholder="chairperson@example.com"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- OFFICE CONTACT -->
+
+                        <div class="admin-section-card mb-4">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Ward Office Contact
+                                </h5>
+
+                                <p>
+                                    Enter the official contact and location details.
+                                </p>
+
+                            </div>
+
+
+                            <div class="row g-3">
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Office Phone
+                                    </label>
+
+
+                                    <input
+                                        type="tel"
+                                        class="form-control"
+                                        placeholder="Ward office phone number"
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Office Email
+                                    </label>
+
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        placeholder="ward@example.com"
+                                    >
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Office Address
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Enter ward office address..."
+                                    >
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Google Maps Embed / Location URL
+                                    </label>
+
+
+                                    <input
+                                        type="url"
+                                        class="form-control"
+                                        placeholder="https://maps.google.com/..."
+                                    >
+
+
+                                    <div class="form-text">
+
+                                        Paste the Google Maps location or embed URL for this ward office.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- WARD IMAGE -->
+
+                        <div class="admin-section-card">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Ward Image
+                                </h5>
+
+                                <p>
+                                    Upload an image representing this ward or ward office.
+                                </p>
+
+                            </div>
+
+
+                            <div class="ward-image-upload">
+
+
+                                <div
+                                    class="ward-image-placeholder"
+                                    id="imagePlaceholder"
+                                >
+
+                                    <i class="bi bi-cloud-arrow-up"></i>
+
+                                    <h6>
+                                        Upload Ward Image
+                                    </h6>
+
+                                    <p>
+                                        JPG, JPEG or PNG. Recommended size 1200 × 700px.
+                                    </p>
+
+                                    <label
+                                        for="wardImage"
+                                        class="btn btn-outline-primary btn-sm"
+                                    >
+                                        <i class="bi bi-upload me-1"></i>
+                                        Choose Image
+                                    </label>
+
+                                </div>
+
+
+                                <img
+                                    id="wardImagePreview"
+                                    class="ward-image-preview d-none"
+                                    alt="Ward preview"
+                                >
+
+
+                                <input
+                                    type="file"
+                                    id="wardImage"
+                                    name="wardImage"
+                                    class="d-none"
+                                    accept="image/jpeg,image/png,image/jpg"
+                                    onchange="previewWardImage(event)"
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ================= RIGHT ================= -->
+
+                    <div class="col-lg-4">
+
+
+                        <!-- STATUS -->
+
+                        <div class="admin-section-card mb-4">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Publication
+                                </h5>
+
+                                <p>
+                                    Control ward visibility on the website.
+                                </p>
+
+                            </div>
+
+
+                            <div class="notice-status-preview mb-3">
+
+
+                                <div>
+
+                                    <span>
+                                        Current Status
+                                    </span>
+
+                                    <strong id="statusPreview">
+                                        Published
+                                    </strong>
+
+                                </div>
+
+
+                                <i class="bi bi-globe2"></i>
+
+                            </div>
+
+
+                            <select
+                                class="form-select"
+                                id="statusSelect"
+                                onchange="updateStatusPreview()"
+                            >
+
+                                <option
+                                    value="Published"
+                                    selected
+                                >
+                                    Published
+                                </option>
+
+                                <option value="Draft">
+                                    Draft
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- WARD PREVIEW -->
+
+                        <div class="admin-section-card mb-4">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Ward Preview
+                                </h5>
+
+                                <p>
+                                    Basic public information preview.
+                                </p>
+
+                            </div>
+
+
+                            <div class="ward-preview-card">
+
+
+                                <div class="ward-preview-number">
+                                    01
+                                </div>
+
+
+                                <h5>
+                                    Ward No. 1
+                                </h5>
+
+
+                                <p>
+                                    Bishnu Rural Municipality
+                                </p>
+
+
+                                <div class="ward-preview-divider"></div>
+
+
+                                <div class="ward-preview-info">
+
+                                    <div>
+
+                                        <i class="bi bi-person"></i>
+
+                                        <span>
+                                            Chairperson
+                                        </span>
+
+                                    </div>
+
+
+                                    <strong>
+                                        Ram Bahadur
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="ward-preview-info">
+
+                                    <div>
+
+                                        <i class="bi bi-telephone"></i>
+
+                                        <span>
+                                            Contact
+                                        </span>
+
+                                    </div>
+
+
+                                    <strong>
+                                        98XXXXXXXX
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GUIDE -->
+
+                        <div class="admin-section-card">
+
+
+                            <div class="admin-form-title">
+
+                                <h5>
+                                    Publishing Guide
+                                </h5>
+
+                                <p>
+                                    Before publishing
+                                </p>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-check-circle"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Verify ward number
+                                    </strong>
+
+                                    <p>
+                                        Make sure the correct ward number is selected.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-person-check"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Verify chairperson
+                                    </strong>
+
+                                    <p>
+                                        Keep the chairperson information accurate.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-geo-alt"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Check location
+                                    </strong>
+
+                                    <p>
+                                        Make sure the office address and map location are correct.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-guide-item">
+
+                                <i class="bi bi-image"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Use a good image
+                                    </strong>
+
+                                    <p>
+                                        Use a clear image of the ward or ward office.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+
+
+                    <a
+                        href="/admin/wards"
+                        class="btn btn-outline-secondary"
+                    >
+                        Cancel
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        onclick="saveWard(event)"
+                    >
+
+                        <i class="bi bi-check-lg me-1"></i>
+
+                        <%= mode === "edit"
+                            ? "Update Ward"
+                            : "Save Ward"
+                        %>
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+
+function updateStatusPreview() {
+
+    const select =
+        document.getElementById("statusSelect");
+
+    const preview =
+        document.getElementById("statusPreview");
+
+
+    preview.textContent =
+        select.value;
+
+
+    if (select.value === "Published") {
+
+        preview.style.color = "#198754";
+
+    } else {
+
+        preview.style.color = "#997404";
+
+    }
+
+}
+
+
+function previewWardImage(event) {
+
+    const file =
+        event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+
+
+    const preview =
+        document.getElementById("wardImagePreview");
+
+    const placeholder =
+        document.getElementById("imagePlaceholder");
+
+
+    preview.src =
+        URL.createObjectURL(file);
+
+
+    preview.classList.remove("d-none");
+
+    placeholder.classList.add("d-none");
+
+}
+
+
+function saveWard(event) {
+
+    event.preventDefault();
+
+
+    alert(
+        "Frontend demo only. Ward information is not saved yet because the backend and database are not connected."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

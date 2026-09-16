@@ -1,0 +1,472 @@
+<%- include("../layouts/header") %>
+<%- include("../layouts/navbar") %>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+
+        <div class="page-header-content">
+
+            <span class="page-header-label">
+                <i class="bi bi-person-badge-fill"></i>
+                Employee Profile
+            </span>
+
+            <h1>Employee Details</h1>
+
+            <p>
+                Official profile and professional responsibilities.
+            </p>
+
+            <nav aria-label="breadcrumb">
+
+                <ol class="breadcrumb mb-0">
+
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <a href="/employees">Employees</a>
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Details
+                    </li>
+
+                </ol>
+
+            </nav>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Employee Details -->
+<section class="employee-details-section py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <!-- Left Profile -->
+            <div class="col-lg-4">
+
+                <div class="employee-profile-card">
+
+                    <div class="employee-profile-image">
+
+                        <img
+                            src="<%= employee.image %>"
+                            alt="<%= employee.name %>"
+                            onerror="this.src='https://ui-avatars.com/api/?name=<%= encodeURIComponent(employee.name) %>&background=eaf2ff&color=0d6efd&size=500'"
+                        >
+
+                    </div>
+
+
+                    <div class="employee-profile-content">
+
+                        <span class="employee-detail-category">
+                            <i class="bi bi-folder-fill"></i>
+                            <%= employee.category %>
+                        </span>
+
+                        <h2>
+                            <%= employee.name %>
+                        </h2>
+
+                        <h5>
+                            <%= employee.position %>
+                        </h5>
+
+                        <div class="employee-detail-profession">
+                            <i class="bi bi-award-fill"></i>
+                            <span>
+                                <%= employee.profession %>
+                            </span>
+                        </div>
+
+
+                        <hr>
+
+
+                        <div class="employee-contact-list">
+
+                            <div class="employee-contact-item">
+
+                                <div class="employee-contact-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+
+                                <div>
+                                    <small>Phone</small>
+
+                                    <a href="tel:<%= employee.phone %>">
+                                        <%= employee.phone %>
+                                    </a>
+                                </div>
+
+                            </div>
+
+
+                            <div class="employee-contact-item">
+
+                                <div class="employee-contact-icon">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+
+                                <div>
+                                    <small>Email</small>
+
+                                    <a href="mailto:<%= employee.email %>">
+                                        <%= employee.email %>
+                                    </a>
+                                </div>
+
+                            </div>
+
+
+                            <div class="employee-contact-item">
+
+                                <div class="employee-contact-icon">
+                                    <i class="bi bi-building-fill"></i>
+                                </div>
+
+                                <div>
+                                    <small>Office</small>
+
+                                    <strong>
+                                        <%= employee.office %>
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="employee-contact-item">
+
+                                <div class="employee-contact-icon">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+
+                                <div>
+                                    <small>Location</small>
+
+                                    <strong>
+                                        <%= employee.ward %>
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="employee-profile-actions">
+
+                            <a
+                                href="tel:<%= employee.phone %>"
+                                class="btn btn-primary"
+                            >
+                                <i class="bi bi-telephone-fill"></i>
+                                Call Employee
+                            </a>
+
+                            <a
+                                href="mailto:<%= employee.email %>"
+                                class="btn btn-outline-primary"
+                            >
+                                <i class="bi bi-envelope-fill"></i>
+                                Email
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Content -->
+            <div class="col-lg-8">
+
+
+                <!-- Professional Information -->
+                <div class="employee-detail-card mb-4">
+
+                    <div class="employee-detail-card-header">
+
+                        <div>
+
+                            <span>
+                                Professional Profile
+                            </span>
+
+                            <h4>
+                                Working Profession & Responsibility
+                            </h4>
+
+                        </div>
+
+                        <div class="employee-detail-header-icon">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-detail-body">
+
+                        <div class="employee-profession-highlight">
+
+                            <div class="employee-profession-icon">
+                                <i class="bi bi-award-fill"></i>
+                            </div>
+
+                            <div>
+
+                                <small>
+                                    Working Profession
+                                </small>
+
+                                <h5>
+                                    <%= employee.profession %>
+                                </h5>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <h5 class="employee-subtitle">
+                                Main Responsibilities
+                            </h5>
+
+                            <p class="employee-responsibility">
+                                <%= employee.responsibility %>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Employment Information -->
+                <div class="employee-detail-card mb-4">
+
+                    <div class="employee-detail-card-header">
+
+                        <div>
+
+                            <span>
+                                Employee Information
+                            </span>
+
+                            <h4>
+                                Professional Details
+                            </h4>
+
+                        </div>
+
+                        <div class="employee-detail-header-icon">
+                            <i class="bi bi-person-vcard-fill"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-detail-body">
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+
+                                <div class="employee-info-row">
+
+                                    <i class="bi bi-person-badge"></i>
+
+                                    <div>
+
+                                        <small>Position</small>
+
+                                        <strong>
+                                            <%= employee.position %>
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="employee-info-row">
+
+                                    <i class="bi bi-diagram-3-fill"></i>
+
+                                    <div>
+
+                                        <small>Department</small>
+
+                                        <strong>
+                                            <%= employee.category %>
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="employee-info-row">
+
+                                    <i class="bi bi-mortarboard-fill"></i>
+
+                                    <div>
+
+                                        <small>Qualification</small>
+
+                                        <strong>
+                                            <%= employee.qualification %>
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="employee-info-row">
+
+                                    <i class="bi bi-clock-history"></i>
+
+                                    <div>
+
+                                        <small>Experience</small>
+
+                                        <strong>
+                                            <%= employee.experience %>
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="employee-info-row">
+
+                                    <i class="bi bi-building"></i>
+
+                                    <div>
+
+                                        <small>Office</small>
+
+                                        <strong>
+                                            <%= employee.office %>
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="employee-info-row">
+
+                                    <i class="bi bi-geo-alt-fill"></i>
+
+                                    <div>
+
+                                        <small>Work Location</small>
+
+                                        <strong>
+                                            <%= employee.ward %>
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Responsibility Box -->
+                <div class="employee-responsibility-box">
+
+                    <div class="employee-responsibility-icon">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+
+                    <div>
+
+                        <h5>
+                            Citizen Service Responsibility
+                        </h5>
+
+                        <p>
+                            For services related to
+                            <strong><%= employee.profession %></strong>,
+                            citizens may contact this employee or the
+                            <strong><%= employee.office %></strong>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Back -->
+                <div class="mt-4">
+
+                    <a
+                        href="/employees"
+                        class="btn btn-outline-secondary"
+                    >
+                        <i class="bi bi-arrow-left me-1"></i>
+                        Back to Employees
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<%- include("../layouts/footer") %>
+<%- include("../layouts/scripts") %>

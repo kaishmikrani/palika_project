@@ -1,0 +1,275 @@
+<%- include("../layouts/header") %>
+
+<%- include("../layouts/navbar") %>
+
+<!-- Page Header -->
+<section class="page-header">
+
+    <div class="container">
+
+        <h1 class="fw-bold">
+            News Details
+        </h1>
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb mb-0">
+
+                <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="/news">News & Events</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    News Details
+                </li>
+
+            </ol>
+
+        </nav>
+
+    </div>
+
+</section>
+
+
+<!-- News Details -->
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- Main Article -->
+            <div class="col-lg-8">
+
+                <article class="news-detail-card">
+
+                    <img
+                        src="/images/news-featured.jpg"
+                        class="img-fluid news-detail-image"
+                        alt="News"
+                    >
+
+
+                    <div class="news-detail-content">
+
+                        <span class="badge bg-primary mb-3">
+                            Municipality News
+                        </span>
+
+                        <h1 class="fw-bold">
+                            Municipality Development and
+                            Public Service Activities
+                        </h1>
+
+
+                        <div class="news-detail-meta">
+
+                            <span>
+                                <i class="bi bi-calendar3"></i>
+                                Published: 2083
+                            </span>
+
+                            <span>
+                                <i class="bi bi-person"></i>
+                                Municipality Administration
+                            </span>
+
+                        </div>
+
+                        <hr>
+
+
+                        <p>
+                            Bishnu Rural Municipality continues to
+                            work towards improving public services
+                            and supporting local development.
+                        </p>
+
+                        <p>
+                            Various activities and programs are
+                            conducted to improve services available
+                            to citizens and strengthen local
+                            development.
+                        </p>
+
+
+                        <h4 class="fw-bold mt-4">
+                            Development Activities
+                        </h4>
+
+                        <p>
+                            The municipality works with local
+                            communities and stakeholders to implement
+                            development activities and public service
+                            programs.
+                        </p>
+
+
+                        <h4 class="fw-bold mt-4">
+                            Public Information
+                        </h4>
+
+                        <p>
+                            Citizens are encouraged to regularly
+                            check the municipality website for
+                            notices, announcements, services and
+                            other important information.
+                        </p>
+
+
+                        <!-- Share -->
+                        <div class="news-share mt-5">
+
+                            <h6 class="fw-bold mb-3">
+                                Share this news
+                            </h6>
+
+                            <div class="d-flex gap-2">
+
+                                <button class="btn btn-primary">
+                                    <i class="bi bi-facebook"></i>
+                                </button>
+
+                                <button class="btn btn-info text-white">
+                                    <i class="bi bi-twitter-x"></i>
+                                </button>
+
+                                <button class="btn btn-success">
+                                    <i class="bi bi-whatsapp"></i>
+                                </button>
+
+                                <button class="btn btn-secondary">
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+
+                <!-- Recent News -->
+                <div class="news-sidebar-card mb-4">
+
+                    <h4 class="fw-bold mb-4">
+                        Recent News
+                    </h4>
+
+
+                    <a href="/news/2"
+                       class="recent-news-item">
+
+                        <div class="recent-news-image">
+
+                            <img
+                                src="/images/news-1.jpg"
+                                alt="News"
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <h6 class="fw-bold">
+                                Public Service Improvement Activities
+                            </h6>
+
+                            <small>
+                                <i class="bi bi-calendar3"></i>
+                                2083
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="/news/3"
+                       class="recent-news-item">
+
+                        <div class="recent-news-image">
+
+                            <img
+                                src="/images/news-2.jpg"
+                                alt="News"
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <h6 class="fw-bold">
+                                Local Development Activities
+                            </h6>
+
+                            <small>
+                                <i class="bi bi-calendar3"></i>
+                                2083
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="/news/4"
+                       class="recent-news-item">
+
+                        <div class="recent-news-image">
+
+                            <img
+                                src="/images/news-3.jpg"
+                                alt="News"
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <h6 class="fw-bold">
+                                Community Program and Events
+                            </h6>
+
+                            <small>
+                                <i class="bi bi-calendar3"></i>
+                                2082
+                            </small>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Back -->
+                <a href="/news"
+                   class="btn btn-outline-primary w-100">
+
+                    <i class="bi bi-arrow-left me-1"></i>
+                    Back to News
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%- include("../layouts/footer") %>

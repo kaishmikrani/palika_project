@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= title %></title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+
+<!-- Sidebar -->
+
+<aside class="admin-sidebar">
+
+    <div class="admin-brand">
+
+        <div class="admin-brand-icon">
+            <i class="bi bi-building"></i>
+        </div>
+
+        <div>
+            <h5>Bishnu Palika</h5>
+            <small>Admin Panel</small>
+        </div>
+
+    </div>
+
+
+    <div class="admin-menu-title">
+        MAIN MENU
+    </div>
+
+
+    <nav class="admin-menu">
+
+        <a href="/admin/dashboard" class="admin-menu-link">
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/admin/notices" class="admin-menu-link">
+            <i class="bi bi-megaphone-fill"></i>
+            <span>Notices</span>
+        </a>
+
+        <a href="/admin/news" class="admin-menu-link">
+            <i class="bi bi-newspaper"></i>
+            <span>News & Events</span>
+        </a>
+
+        <a href="/admin/services" class="admin-menu-link">
+            <i class="bi bi-person-workspace"></i>
+            <span>Services</span>
+        </a>
+
+        <a href="/admin/wards" class="admin-menu-link">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>Wards</span>
+        </a>
+
+        <a href="/admin/employees" class="admin-menu-link active">
+            <i class="bi bi-people-fill"></i>
+            <span>Employees</span>
+        </a>
+
+        <a href="/admin/downloads" class="admin-menu-link">
+            <i class="bi bi-download"></i>
+            <span>Downloads</span>
+        </a>
+
+        <a href="/admin/gallery" class="admin-menu-link">
+            <i class="bi bi-images"></i>
+            <span>Gallery</span>
+        </a>
+
+        <a href="/admin/slider" class="admin-menu-link">
+            <i class="bi bi-sliders"></i>
+            <span>Homepage Slider</span>
+        </a>
+
+
+        <div class="admin-menu-title">
+            SETTINGS
+        </div>
+
+
+        <a href="/admin/profile" class="admin-menu-link">
+            <i class="bi bi-person-circle"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="/admin/settings" class="admin-menu-link">
+            <i class="bi bi-gear-fill"></i>
+            <span>Settings</span>
+        </a>
+
+        <a
+            href="/"
+            target="_blank"
+            class="admin-menu-link"
+        >
+            <i class="bi bi-globe"></i>
+            <span>View Website</span>
+        </a>
+
+    </nav>
+
+
+    <div class="admin-sidebar-bottom">
+
+        <a href="/admin/login">
+
+            <i class="bi bi-box-arrow-left"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- Main -->
+
+<main class="admin-main">
+
+
+    <!-- Topbar -->
+
+    <header class="admin-topbar">
+
+        <div class="d-flex align-items-center gap-3">
+
+            <button
+                class="admin-mobile-menu"
+                onclick="toggleAdminSidebar()"
+            >
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div>
+
+                <h4>Employees</h4>
+
+                <p>
+                    Manage municipality officials and staff
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-user">
+
+            <div class="admin-user-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+            <div>
+
+                <strong>Administrator</strong>
+
+                <small>Super Admin</small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Content -->
+
+    <div class="admin-content">
+
+
+        <!-- Heading -->
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div class="admin-breadcrumb">
+
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>Employees</span>
+
+            </div>
+
+
+            <a
+                href="/admin/employees/add"
+                class="btn btn-primary"
+            >
+
+                <i class="bi bi-plus-lg me-1"></i>
+
+                Add Employee
+
+            </a>
+
+        </div>
+
+
+        <!-- Stats -->
+
+        <div class="row g-4 mb-4">
+
+
+            <div class="col-xl-3 col-md-6">
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon bg-primary-subtle text-primary">
+
+                        <i class="bi bi-people-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <small class="text-muted">
+                            Total Employees
+                        </small>
+
+                        <h3 class="mb-0 fw-bold">
+                            <%= employees.length %>
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-xl-3 col-md-6">
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon bg-success-subtle text-success">
+
+                        <i class="bi bi-person-check-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <small class="text-muted">
+                            Active
+                        </small>
+
+                        <h3 class="mb-0 fw-bold">
+                            <%= employees.filter(employee => employee.active !== false).length %>
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-xl-3 col-md-6">
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon bg-warning-subtle text-warning">
+
+                        <i class="bi bi-person-dash-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <small class="text-muted">
+                            Inactive
+                        </small>
+
+                        <h3 class="mb-0 fw-bold">
+                            <%= employees.filter(employee => employee.active === false).length %>
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-xl-3 col-md-6">
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon bg-info-subtle text-info">
+
+                        <i class="bi bi-diagram-3-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <small class="text-muted">
+                            Departments
+                        </small>
+
+                        <h3 class="mb-0 fw-bold">
+                            <%= new Set(employees.map(employee => employee.category)).size %>
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Employee List -->
+
+        <div class="admin-section-card">
+
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <h5>
+                        Employee Directory
+                    </h5>
+
+                    <p>
+                        View and manage municipality employees.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Filters -->
+
+            <div class="row g-3 mb-4">
+
+
+                <div class="col-lg-5">
+
+                    <div class="employee-admin-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input
+                            type="text"
+                            id="adminEmployeeSearch"
+                            class="form-control"
+                            placeholder="Search employee..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <select
+                        class="form-select"
+                        id="adminEmployeeCategory"
+                    >
+
+                        <option value="">
+                            All Categories
+                        </option>
+
+                        <option>
+                            Administration
+                        </option>
+
+                        <option>
+                            Health
+                        </option>
+
+                        <option>
+                            Education
+                        </option>
+
+                        <option>
+                            Engineering
+                        </option>
+
+                        <option>
+                            Finance
+                        </option>
+
+                        <option>
+                            Agriculture
+                        </option>
+
+                        <option>
+                            IT & Records
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="col-lg-2">
+
+                    <select
+                        class="form-select"
+                        id="adminEmployeeStatus"
+                    >
+
+                        <option value="">
+                            All Status
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="col-lg-2">
+
+                    <button
+                        class="btn btn-outline-secondary w-100"
+                        onclick="resetEmployeeFilters()"
+                    >
+
+                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                        Reset
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Table -->
+
+            <div class="table-responsive">
+
+                <table class="table admin-management-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Employee
+                            </th>
+
+                            <th>
+                                Position
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Profession
+                            </th>
+
+                            <th>
+                                Office
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th class="text-end">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="employeeTableBody">
+
+
+                        <!-- Employee 1 -->
+
+                        <tr
+                            class="admin-employee-row"
+                            data-name="Ram Bahadur Thapa"
+                            data-category="Administration"
+                            data-status="active"
+                        >
+
+                            <td>
+
+                                <div class="admin-employee-info">
+
+                                    <img
+                                        src="https://ui-avatars.com/api/?name=Ram+Bahadur+Thapa&background=eaf2ff&color=0d6efd"
+                                        alt="Employee"
+                                    >
+
+                                    <div>
+
+                                        <strong>
+                                            Ram Bahadur Thapa
+                                        </strong>
+
+                                        <small>
+                                            9800000001
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Chief Administrative Officer
+                            </td>
+
+
+                            <td>
+                                <span class="admin-category-badge">
+                                    Administration
+                                </span>
+                            </td>
+
+
+                            <td>
+                                Municipality Administration
+                            </td>
+
+
+                            <td>
+                                Municipal Office
+                            </td>
+
+
+                            <td>
+
+                                <span class="badge bg-success-subtle text-success">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="/employees/1"
+                                        target="_blank"
+                                        class="btn btn-outline-secondary"
+                                        title="View"
+                                    >
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <a
+                                        href="/admin/employees/edit/1"
+                                        class="btn btn-outline-primary"
+                                        title="Edit"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        class="btn btn-outline-danger"
+                                        title="Delete"
+                                        onclick="deleteEmployee(this, 'Ram Bahadur Thapa')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Employee 2 -->
+
+                        <tr
+                            class="admin-employee-row"
+                            data-name="Sita Kumari Yadav"
+                            data-category="Administration"
+                            data-status="active"
+                        >
+
+                            <td>
+
+                                <div class="admin-employee-info">
+
+                                    <img
+                                        src="https://ui-avatars.com/api/?name=Sita+Kumari+Yadav&background=eaf2ff&color=0d6efd"
+                                        alt="Employee"
+                                    >
+
+                                    <div>
+
+                                        <strong>
+                                            Sita Kumari Yadav
+                                        </strong>
+
+                                        <small>
+                                            9800000002
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Section Officer
+                            </td>
+
+
+                            <td>
+                                <span class="admin-category-badge">
+                                    Administration
+                                </span>
+                            </td>
+
+
+                            <td>
+                                General Administration
+                            </td>
+
+
+                            <td>
+                                Administration Section
+                            </td>
+
+
+                            <td>
+
+                                <span class="badge bg-success-subtle text-success">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="/employees/2"
+                                        target="_blank"
+                                        class="btn btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <a
+                                        href="/admin/employees/edit/2"
+                                        class="btn btn-outline-primary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        class="btn btn-outline-danger"
+                                        onclick="deleteEmployee(this, 'Sita Kumari Yadav')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Employee 3 -->
+
+                        <tr
+                            class="admin-employee-row"
+                            data-name="Milan Kumar Shah"
+                            data-category="Engineering"
+                            data-status="active"
+                        >
+
+                            <td>
+
+                                <div class="admin-employee-info">
+
+                                    <img
+                                        src="https://ui-avatars.com/api/?name=Milan+Kumar+Shah&background=eaf2ff&color=0d6efd"
+                                        alt="Employee"
+                                    >
+
+                                    <div>
+
+                                        <strong>
+                                            Milan Kumar Shah
+                                        </strong>
+
+                                        <small>
+                                            9800000003
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Civil Engineer
+                            </td>
+
+
+                            <td>
+                                <span class="admin-category-badge">
+                                    Engineering
+                                </span>
+                            </td>
+
+
+                            <td>
+                                Civil Engineering
+                            </td>
+
+
+                            <td>
+                                Engineering Section
+                            </td>
+
+
+                            <td>
+
+                                <span class="badge bg-success-subtle text-success">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="/employees/3"
+                                        target="_blank"
+                                        class="btn btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <a
+                                        href="/admin/employees/edit/3"
+                                        class="btn btn-outline-primary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        class="btn btn-outline-danger"
+                                        onclick="deleteEmployee(this, 'Milan Kumar Shah')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Employee 4 -->
+
+                        <tr
+                            class="admin-employee-row"
+                            data-name="Anita Devi Chaudhary"
+                            data-category="Finance"
+                            data-status="active"
+                        >
+
+                            <td>
+
+                                <div class="admin-employee-info">
+
+                                    <img
+                                        src="https://ui-avatars.com/api/?name=Anita+Devi+Chaudhary&background=eaf2ff&color=0d6efd"
+                                        alt="Employee"
+                                    >
+
+                                    <div>
+
+                                        <strong>
+                                            Anita Devi Chaudhary
+                                        </strong>
+
+                                        <small>
+                                            9800000004
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Account Officer
+                            </td>
+
+
+                            <td>
+                                <span class="admin-category-badge">
+                                    Finance
+                                </span>
+                            </td>
+
+
+                            <td>
+                                Municipal Finance & Accounts
+                            </td>
+
+
+                            <td>
+                                Finance Section
+                            </td>
+
+
+                            <td>
+
+                                <span class="badge bg-success-subtle text-success">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="/employees/4"
+                                        target="_blank"
+                                        class="btn btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <a
+                                        href="/admin/employees/edit/4"
+                                        class="btn btn-outline-primary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        class="btn btn-outline-danger"
+                                        onclick="deleteEmployee(this, 'Anita Devi Chaudhary')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Employee 5 -->
+
+                        <tr
+                            class="admin-employee-row"
+                            data-name="Rajesh Kumar Yadav"
+                            data-category="Health"
+                            data-status="active"
+                        >
+
+                            <td>
+
+                                <div class="admin-employee-info">
+
+                                    <img
+                                        src="https://ui-avatars.com/api/?name=Rajesh+Kumar+Yadav&background=eaf2ff&color=0d6efd"
+                                        alt="Employee"
+                                    >
+
+                                    <div>
+
+                                        <strong>
+                                            Rajesh Kumar Yadav
+                                        </strong>
+
+                                        <small>
+                                            9800000005
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Health Assistant
+                            </td>
+
+
+                            <td>
+                                <span class="admin-category-badge">
+                                    Health
+                                </span>
+                            </td>
+
+
+                            <td>
+                                Public Health Service
+                            </td>
+
+
+                            <td>
+                                Health Section
+                            </td>
+
+
+                            <td>
+
+                                <span class="badge bg-success-subtle text-success">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="/employees/5"
+                                        target="_blank"
+                                        class="btn btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <a
+                                        href="/admin/employees/edit/5"
+                                        class="btn btn-outline-primary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        class="btn btn-outline-danger"
+                                        onclick="deleteEmployee(this, 'Rajesh Kumar Yadav')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <% employees.slice(5).forEach(employee => { %>
+
+                        <tr
+                            class="admin-employee-row"
+                            data-name="<%= employee.name %>"
+                            data-category="<%= employee.category %>"
+                            data-status="<%= employee.active === false ? 'inactive' : 'active' %>"
+                        >
+
+                            <td>
+                                <div class="admin-employee-info">
+                                    <img
+                                        src="<%= employee.image %>"
+                                        alt="<%= employee.name %>"
+                                        onerror="this.src='https://ui-avatars.com/api/?name=<%= encodeURIComponent(employee.name) %>&background=eaf2ff&color=0d6efd'"
+                                    >
+                                    <div>
+                                        <strong><%= employee.name %></strong>
+                                        <small><%= employee.phone || 'No phone provided' %></small>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td><%= employee.position %></td>
+
+                            <td>
+                                <span class="admin-category-badge">
+                                    <%= employee.category %>
+                                </span>
+                            </td>
+
+                            <td><%= employee.profession %></td>
+                            <td><%= employee.office %></td>
+
+                            <td>
+                                <% if (employee.active === false) { %>
+                                    <span class="badge bg-secondary-subtle text-secondary">Inactive</span>
+                                <% } else { %>
+                                    <span class="badge bg-success-subtle text-success">Active</span>
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <div class="admin-actions">
+                                    <a href="/employees/<%= employee.id %>" target="_blank" class="btn btn-outline-secondary" title="View">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="/admin/employees/edit/<%= employee.id %>" class="btn btn-outline-primary" title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <button class="btn btn-outline-danger" title="Delete" onclick="deleteEmployee(this, '<%= employee.name %>')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <% }) %>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <div class="admin-pagination">
+
+                <span id="employeeResultText">
+                    Showing <%= employees.length %> of <%= employees.length %> employees
+                </span>
+
+                <div>
+
+                    <button class="btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+
+                    <button class="btn btn-sm btn-primary">
+                        1
+                    </button>
+
+                    <button class="btn btn-sm btn-outline-secondary">
+                        2
+                    </button>
+
+                    <button class="btn btn-sm btn-outline-secondary">
+                        3
+                    </button>
+
+                    <button class="btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Information -->
+
+        <div class="admin-section-card mt-4">
+
+            <div class="admin-guide-item">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                <div>
+
+                    <strong>
+                        Employee Management
+                    </strong>
+
+                    <p>
+                        Add accurate employee information including
+                        position, department, profession, responsibilities
+                        and contact details. This information will be
+                        displayed on the public Employees page.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+
+const searchInput =
+    document.getElementById("adminEmployeeSearch");
+
+const categorySelect =
+    document.getElementById("adminEmployeeCategory");
+
+const statusSelect =
+    document.getElementById("adminEmployeeStatus");
+
+const rows =
+    document.querySelectorAll(".admin-employee-row");
+
+
+function filterEmployees() {
+
+    const search =
+        searchInput.value.toLowerCase().trim();
+
+    const category =
+        categorySelect.value;
+
+    const status =
+        statusSelect.value;
+
+    let visible = 0;
+
+
+    rows.forEach(function(row) {
+
+        const name =
+            row.dataset.name.toLowerCase();
+
+        const rowCategory =
+            row.dataset.category;
+
+        const rowStatus =
+            row.dataset.status;
+
+
+        const searchMatch =
+            name.includes(search);
+
+        const categoryMatch =
+            !category ||
+            rowCategory === category;
+
+        const statusMatch =
+            !status ||
+            rowStatus === status;
+
+
+        if (
+            searchMatch &&
+            categoryMatch &&
+            statusMatch
+        ) {
+
+            row.style.display = "";
+
+            visible++;
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "employeeResultText"
+    ).textContent =
+        `Showing ${visible} matching employee${visible === 1 ? "" : "s"}`;
+
+}
+
+
+searchInput.addEventListener(
+    "input",
+    filterEmployees
+);
+
+categorySelect.addEventListener(
+    "change",
+    filterEmployees
+);
+
+statusSelect.addEventListener(
+    "change",
+    filterEmployees
+);
+
+
+function resetEmployeeFilters() {
+
+    searchInput.value = "";
+
+    categorySelect.value = "";
+
+    statusSelect.value = "";
+
+    filterEmployees();
+
+}
+
+
+function deleteEmployee(button, name) {
+
+    const confirmed =
+        confirm(
+            `Are you sure you want to delete ${name}?`
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+    button
+        .closest("tr")
+        .remove();
+
+    alert(
+        "Employee deleted from the demo interface."
+    );
+
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

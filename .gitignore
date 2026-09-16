@@ -1,0 +1,13 @@
+# Ignore dependencies
+node_modules/
+
+# Ignore project folders that should not be uploaded
+ourprojectfile/
+ourprojectfolder/
+
+# Ignore docs if you do not want them in GitHub
+docs/
+
+# Optional: environment files
+.env
+npm-debug.log*

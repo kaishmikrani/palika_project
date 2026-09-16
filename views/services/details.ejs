@@ -1,0 +1,200 @@
+<%- include("../layouts/header") %>
+
+<%- include("../layouts/navbar") %>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+
+        <h1 class="fw-bold">Service Details</h1>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="/services">Services</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Details
+                </li>
+            </ol>
+        </nav>
+
+    </div>
+</section>
+
+
+<!-- Service Details -->
+<section class="py-5">
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- Main Content -->
+            <div class="col-lg-8">
+
+                <div class="service-detail-card">
+
+                    <div class="service-detail-icon">
+                        <i class="bi bi-person-vcard"></i>
+                    </div>
+
+                    <span class="badge bg-primary mb-3">
+                        Registration
+                    </span>
+
+                    <h2 class="fw-bold">
+                        Birth Registration
+                    </h2>
+
+                    <p class="text-muted">
+                        Birth registration is an important municipal
+                        service for officially registering the birth
+                        of a child.
+                    </p>
+
+                    <hr>
+
+                    <h4 class="fw-bold mb-3">
+                        Required Documents
+                    </h4>
+
+                    <ul class="list-group mb-4">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            Application form
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            Required identification documents
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            Hospital / birth-related document
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            Other documents as required
+                        </li>
+
+                    </ul>
+
+
+                    <h4 class="fw-bold mb-3">
+                        Service Process
+                    </h4>
+
+                    <div class="service-process">
+
+                        <div class="process-item">
+                            <span>1</span>
+                            <div>
+                                <h6>Submit Application</h6>
+                                <p>
+                                    Submit the required application
+                                    and documents.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="process-item">
+                            <span>2</span>
+                            <div>
+                                <h6>Document Verification</h6>
+                                <p>
+                                    Municipality staff verify the
+                                    submitted documents.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="process-item">
+                            <span>3</span>
+                            <div>
+                                <h6>Certificate Issued</h6>
+                                <p>
+                                    The certificate is provided after
+                                    successful verification.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+
+                <div class="service-info-box">
+
+                    <h4 class="fw-bold mb-4">
+                        Service Information
+                    </h4>
+
+                    <div class="info-row">
+                        <i class="bi bi-clock"></i>
+
+                        <div>
+                            <small>Processing Time</small>
+                            <strong>1–3 Days</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="bi bi-cash-stack"></i>
+
+                        <div>
+                            <small>Service Fee</small>
+                            <strong>As per municipal rules</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="bi bi-building"></i>
+
+                        <div>
+                            <small>Service Office</small>
+                            <strong>Municipality Office</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="bi bi-telephone"></i>
+
+                        <div>
+                            <small>Contact</small>
+                            <strong>Municipality Help Desk</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="mt-4">
+                    <a href="/services"
+                       class="btn btn-outline-primary w-100">
+                        <i class="bi bi-arrow-left"></i>
+                        Back to Services
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<%- include("../layouts/footer") %>

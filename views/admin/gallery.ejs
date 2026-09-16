@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= title || "Manage Gallery" %></title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div>
+                <h5>Bishnu Palika</h5>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="admin-menu">
+
+            <a href="/admin/dashboard" class="admin-menu-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/admin/notices" class="admin-menu-link">
+                <i class="bi bi-megaphone-fill"></i>
+                <span>Notices</span>
+            </a>
+
+            <a href="/admin/news" class="admin-menu-link">
+                <i class="bi bi-newspaper"></i>
+                <span>News & Events</span>
+            </a>
+
+            <a href="/admin/services" class="admin-menu-link">
+                <i class="bi bi-person-workspace"></i>
+                <span>Services</span>
+            </a>
+
+            <a href="/admin/wards" class="admin-menu-link">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Wards</span>
+            </a>
+
+            <a href="/admin/downloads" class="admin-menu-link">
+                <i class="bi bi-download"></i>
+                <span>Downloads</span>
+            </a>
+
+            <a href="/admin/gallery" class="admin-menu-link active">
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="/admin/slider" class="admin-menu-link">
+                <i class="bi bi-sliders"></i>
+                <span>Homepage Slider</span>
+            </a>
+
+
+            <div class="admin-menu-title">
+                SETTINGS
+            </div>
+
+
+            <a href="/admin/profile" class="admin-menu-link">
+                <i class="bi bi-person-circle"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="/admin/settings" class="admin-menu-link">
+                <i class="bi bi-gear-fill"></i>
+                <span>Settings</span>
+            </a>
+
+            <a
+                href="/"
+                target="_blank"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="/admin/login">
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- TOPBAR -->
+
+        <div class="admin-topbar">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button
+                    type="button"
+                    class="admin-mobile-menu"
+                    onclick="toggleAdminSidebar()"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div>
+
+                    <h4>
+                        Gallery
+                    </h4>
+
+                    <p>
+                        Manage photos and videos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div class="d-none d-sm-block">
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Super Admin
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="admin-content">
+
+
+            <!-- BREADCRUMB -->
+
+            <div class="admin-breadcrumb mb-4">
+
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    Gallery
+                </span>
+
+            </div>
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+
+                <div>
+
+                    <h4 class="fw-bold mb-1">
+                        Gallery Management
+                    </h4>
+
+                    <p class="text-muted mb-0">
+                        Manage municipality photos and videos.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/admin/gallery/add"
+                    class="btn btn-primary"
+                >
+
+                    <i class="bi bi-plus-lg me-1"></i>
+
+                    Add Gallery Item
+
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 STATS
+            ================================================== -->
+
+            <div class="row g-4 mb-4">
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-primary-subtle text-primary">
+
+                            <i class="bi bi-images"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Total Items
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                42
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-success-subtle text-success">
+
+                            <i class="bi bi-image"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Photos
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                36
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-danger-subtle text-danger">
+
+                            <i class="bi bi-play-btn"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Videos
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                6
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-warning-subtle text-warning">
+
+                            <i class="bi bi-star-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Featured
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                8
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FILTERS
+            ================================================== -->
+
+            <div class="admin-section-card mb-4">
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <h5>
+                            Search & Filter
+                        </h5>
+
+                        <p>
+                            Find gallery items quickly.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-3">
+
+
+                    <!-- Search -->
+
+                    <div class="col-lg-4">
+
+                        <label class="form-label">
+                            Search
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search gallery title..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Type -->
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <label class="form-label">
+                            Type
+                        </label>
+
+                        <select class="form-select">
+
+                            <option>
+                                All Types
+                            </option>
+
+                            <option>
+                                Photo
+                            </option>
+
+                            <option>
+                                Video
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        <select class="form-select">
+
+                            <option>
+                                All Categories
+                            </option>
+
+                            <option>
+                                Municipality
+                            </option>
+
+                            <option>
+                                Events
+                            </option>
+
+                            <option>
+                                Infrastructure
+                            </option>
+
+                            <option>
+                                Development
+                            </option>
+
+                            <option>
+                                Officials
+                            </option>
+
+                            <option>
+                                Nature
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Status -->
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <label class="form-label">
+                            Status
+                        </label>
+
+                        <select class="form-select">
+
+                            <option>
+                                All Status
+                            </option>
+
+                            <option>
+                                Published
+                            </option>
+
+                            <option>
+                                Draft
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 col-lg-2 d-flex align-items-end">
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary w-100"
+                            onclick="alert('Frontend demo: filters will work after backend integration.')"
+                        >
+
+                            <i class="bi bi-funnel me-1"></i>
+
+                            Filter
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 GALLERY GRID
+            ================================================== -->
+
+            <div class="admin-section-card">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <h5>
+                            Gallery Items
+                        </h5>
+
+                        <p>
+                            Photos and videos currently in the gallery.
+                        </p>
+
+                    </div>
+
+
+                    <span class="badge bg-light text-dark border">
+                        42 Items
+                    </span>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- ITEM 1 -->
+
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+
+                        <div class="gallery-admin-card">
+
+                            <div class="gallery-admin-image">
+
+                                <img
+                                    src="/images/gallery-1.jpg"
+                                    alt="Municipality Office"
+                                >
+
+                                <span class="gallery-type-badge">
+
+                                    <i class="bi bi-image"></i>
+
+                                    Photo
+
+                                </span>
+
+                                <span class="gallery-featured-badge">
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="gallery-admin-body">
+
+                                <span class="admin-category-badge">
+                                    Municipality
+                                </span>
+
+                                <h6>
+                                    Bishnu Rural Municipality Office
+                                </h6>
+
+                                <small>
+                                    15 Aug 2025
+                                </small>
+
+
+                                <div class="gallery-admin-actions">
+
+                                    <a
+                                        href="/admin/gallery/edit/1"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="deleteGalleryItem('Bishnu Rural Municipality Office')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ITEM 2 -->
+
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+
+                        <div class="gallery-admin-card">
+
+                            <div class="gallery-admin-image">
+
+                                <img
+                                    src="/images/gallery-2.jpg"
+                                    alt="Municipality Event"
+                                >
+
+                                <span class="gallery-type-badge">
+
+                                    <i class="bi bi-image"></i>
+
+                                    Photo
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="gallery-admin-body">
+
+                                <span class="admin-category-badge">
+                                    Events
+                                </span>
+
+                                <h6>
+                                    Municipality Program
+                                </h6>
+
+                                <small>
+                                    12 Aug 2025
+                                </small>
+
+
+                                <div class="gallery-admin-actions">
+
+                                    <a
+                                        href="/admin/gallery/edit/2"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="deleteGalleryItem('Municipality Program')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ITEM 3 -->
+
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+
+                        <div class="gallery-admin-card">
+
+                            <div class="gallery-admin-image">
+
+                                <img
+                                    src="/images/gallery-3.jpg"
+                                    alt="Development Project"
+                                >
+
+                                <span class="gallery-type-badge">
+
+                                    <i class="bi bi-image"></i>
+
+                                    Photo
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="gallery-admin-body">
+
+                                <span class="admin-category-badge">
+                                    Development
+                                </span>
+
+                                <h6>
+                                    Local Development Project
+                                </h6>
+
+                                <small>
+                                    08 Aug 2025
+                                </small>
+
+
+                                <div class="gallery-admin-actions">
+
+                                    <a
+                                        href="/admin/gallery/edit/3"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="deleteGalleryItem('Local Development Project')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ITEM 4 -->
+
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+
+                        <div class="gallery-admin-card">
+
+                            <div class="gallery-admin-image">
+
+                                <img
+                                    src="/images/gallery-4.jpg"
+                                    alt="Ward Infrastructure"
+                                >
+
+                                <span class="gallery-type-badge">
+
+                                    <i class="bi bi-image"></i>
+
+                                    Photo
+
+                                </span>
+
+                                <span class="gallery-featured-badge">
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="gallery-admin-body">
+
+                                <span class="admin-category-badge">
+                                    Infrastructure
+                                </span>
+
+                                <h6>
+                                    Ward Infrastructure Work
+                                </h6>
+
+                                <small>
+                                    02 Aug 2025
+                                </small>
+
+
+                                <div class="gallery-admin-actions">
+
+                                    <a
+                                        href="/admin/gallery/edit/4"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="deleteGalleryItem('Ward Infrastructure Work')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ITEM 5 -->
+
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+
+                        <div class="gallery-admin-card">
+
+                            <div class="gallery-admin-image">
+
+                                <img
+                                    src="/images/gallery-5.jpg"
+                                    alt="Official Meeting"
+                                >
+
+                                <span class="gallery-type-badge">
+
+                                    <i class="bi bi-image"></i>
+
+                                    Photo
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="gallery-admin-body">
+
+                                <span class="admin-category-badge">
+                                    Officials
+                                </span>
+
+                                <h6>
+                                    Official Meeting
+                                </h6>
+
+                                <small>
+                                    28 Jul 2025
+                                </small>
+
+
+                                <div class="gallery-admin-actions">
+
+                                    <a
+                                        href="/admin/gallery/edit/5"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="deleteGalleryItem('Official Meeting')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ITEM 6 VIDEO -->
+
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+
+                        <div class="gallery-admin-card">
+
+                            <div class="gallery-admin-image">
+
+                                <img
+                                    src="/images/gallery-6.jpg"
+                                    alt="Municipality Video"
+                                >
+
+                                <span class="gallery-type-badge video">
+
+                                    <i class="bi bi-play-fill"></i>
+
+                                    Video
+
+                                </span>
+
+
+                                <div class="gallery-video-overlay">
+
+                                    <i class="bi bi-play-circle-fill"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="gallery-admin-body">
+
+                                <span class="admin-category-badge">
+                                    Events
+                                </span>
+
+                                <h6>
+                                    Municipality Event Video
+                                </h6>
+
+                                <small>
+                                    25 Jul 2025
+                                </small>
+
+
+                                <div class="gallery-admin-actions">
+
+                                    <a
+                                        href="/admin/gallery/edit/6"
+                                        class="btn btn-sm btn-outline-secondary"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="deleteGalleryItem('Municipality Event Video')"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+
+                <div class="admin-pagination">
+
+                    <div>
+
+                        Showing <strong>1–6</strong>
+                        of <strong>42</strong> items
+
+                    </div>
+
+
+                    <nav>
+
+                        <ul class="pagination pagination-sm mb-0">
+
+                            <li class="page-item disabled">
+
+                                <a class="page-link" href="#">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+
+                            </li>
+
+                            <li class="page-item active">
+
+                                <a class="page-link" href="#">
+                                    1
+                                </a>
+
+                            </li>
+
+                            <li class="page-item">
+
+                                <a class="page-link" href="#">
+                                    2
+                                </a>
+
+                            </li>
+
+                            <li class="page-item">
+
+                                <a class="page-link" href="#">
+                                    3
+                                </a>
+
+                            </li>
+
+                            <li class="page-item">
+
+                                <a class="page-link" href="#">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+
+            <!-- DEMO INFO -->
+
+            <div class="alert alert-info mt-4 mb-0">
+
+                <i class="bi bi-info-circle me-2"></i>
+
+                <strong>Frontend Demo:</strong>
+                Gallery items are currently static. Upload, editing,
+                deletion, filtering and database storage will be connected
+                during backend development.
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+
+function deleteGalleryItem(title) {
+
+    const confirmed = confirm(
+        `Are you sure you want to delete "${title}"?`
+    );
+
+
+    if (confirmed) {
+
+        alert(
+            "Frontend demo: this gallery item would be deleted after backend integration."
+        );
+
+    }
+
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

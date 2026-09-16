@@ -1,0 +1,645 @@
+<%- include("../layouts/header") %>
+
+<%- include("../layouts/navbar") %>
+
+
+<!-- =========================
+     PAGE HEADER
+========================= -->
+
+<section class="page-header">
+
+    <div class="container">
+
+        <h1>Notices</h1>
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb mb-0">
+
+                <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Notices
+                </li>
+
+            </ol>
+
+        </nav>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     NOTICE SECTION
+========================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+
+        <!-- Heading -->
+
+        <div class="row align-items-center mb-4">
+
+            <div class="col-lg-7">
+
+                <span class="section-label">
+                    Notice Board
+                </span>
+
+                <h2 class="mt-2 mb-1">
+                    Latest Notices
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Find the latest official notices and
+                    announcements from Bishnu Rural Municipality.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             SEARCH & FILTER
+        ========================= -->
+
+        <div class="notice-filter-box mb-4">
+
+            <div class="row g-3">
+
+
+                <!-- Search -->
+
+                <div class="col-lg-6">
+
+                    <label class="form-label">
+                        Search Notice
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Search notices..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="col-md-4 col-lg-3">
+
+                    <label class="form-label">
+                        Category
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>
+                            All Categories
+                        </option>
+
+                        <option>
+                            Public Notice
+                        </option>
+
+                        <option>
+                            Vacancy
+                        </option>
+
+                        <option>
+                            Tender
+                        </option>
+
+                        <option>
+                            Information
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Year -->
+
+                <div class="col-md-4 col-lg-2">
+
+                    <label class="form-label">
+                        Year
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>
+                            2026
+                        </option>
+
+                        <option>
+                            2025
+                        </option>
+
+                        <option>
+                            2024
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Button -->
+
+                <div class="col-md-4 col-lg-1 d-flex align-items-end">
+
+                    <button class="btn btn-primary w-100">
+
+                        <i class="bi bi-search"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             NOTICE LIST
+        ========================= -->
+
+        <div class="row">
+
+            <div class="col-lg-8">
+
+
+                <!-- Notice 1 -->
+
+                <div class="notice-list-card">
+
+                    <div class="notice-list-date">
+
+                        <strong>
+                            10
+                        </strong>
+
+                        <span>
+                            SEP
+                        </span>
+
+                        <small>
+                            2026
+                        </small>
+
+                    </div>
+
+
+                    <div class="notice-list-content">
+
+                        <div class="mb-2">
+
+                            <span class="badge text-bg-primary">
+                                Public Notice
+                            </span>
+
+                            <span class="badge text-bg-danger">
+                                Important
+                            </span>
+
+                        </div>
+
+                        <h4>
+                            Important Notice Regarding
+                            Municipal Services
+                        </h4>
+
+                        <p>
+                            This is an important announcement
+                            regarding municipal services and
+                            public information.
+                        </p>
+
+                        <div class="notice-meta">
+
+                            <span>
+                                <i class="bi bi-calendar3"></i>
+                                September 10, 2026
+                            </span>
+
+                            <span>
+                                <i class="bi bi-file-earmark-text"></i>
+                                Document Available
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notice-list-action">
+
+                        <a
+                            href="/notices/1"
+                            class="btn btn-outline-primary"
+                        >
+                            View
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Notice 2 -->
+
+                <div class="notice-list-card">
+
+                    <div class="notice-list-date">
+
+                        <strong>
+                            08
+                        </strong>
+
+                        <span>
+                            SEP
+                        </span>
+
+                        <small>
+                            2026
+                        </small>
+
+                    </div>
+
+
+                    <div class="notice-list-content">
+
+                        <div class="mb-2">
+
+                            <span class="badge text-bg-warning">
+                                Information
+                            </span>
+
+                        </div>
+
+                        <h4>
+                            Public Information Announcement
+                        </h4>
+
+                        <p>
+                            Information for citizens regarding
+                            upcoming municipal activities.
+                        </p>
+
+                        <div class="notice-meta">
+
+                            <span>
+                                <i class="bi bi-calendar3"></i>
+                                September 8, 2026
+                            </span>
+
+                            <span>
+                                <i class="bi bi-file-earmark-text"></i>
+                                Document Available
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notice-list-action">
+
+                        <a
+                            href="/notices/2"
+                            class="btn btn-outline-primary"
+                        >
+                            View
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Notice 3 -->
+
+                <div class="notice-list-card">
+
+                    <div class="notice-list-date">
+
+                        <strong>
+                            05
+                        </strong>
+
+                        <span>
+                            SEP
+                        </span>
+
+                        <small>
+                            2026
+                        </small>
+
+                    </div>
+
+
+                    <div class="notice-list-content">
+
+                        <div class="mb-2">
+
+                            <span class="badge text-bg-success">
+                                Service
+                            </span>
+
+                        </div>
+
+                        <h4>
+                            Notice Regarding Citizen Services
+                        </h4>
+
+                        <p>
+                            Details about available citizen
+                            services and application procedures.
+                        </p>
+
+                        <div class="notice-meta">
+
+                            <span>
+                                <i class="bi bi-calendar3"></i>
+                                September 5, 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notice-list-action">
+
+                        <a
+                            href="/notices/3"
+                            class="btn btn-outline-primary"
+                        >
+                            View
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Notice 4 -->
+
+                <div class="notice-list-card">
+
+                    <div class="notice-list-date">
+
+                        <strong>
+                            01
+                        </strong>
+
+                        <span>
+                            SEP
+                        </span>
+
+                        <small>
+                            2026
+                        </small>
+
+                    </div>
+
+
+                    <div class="notice-list-content">
+
+                        <div class="mb-2">
+
+                            <span class="badge text-bg-info">
+                                Announcement
+                            </span>
+
+                        </div>
+
+                        <h4>
+                            Municipal Development Program
+                        </h4>
+
+                        <p>
+                            Announcement regarding upcoming
+                            development programs.
+                        </p>
+
+                        <div class="notice-meta">
+
+                            <span>
+                                <i class="bi bi-calendar3"></i>
+                                September 1, 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notice-list-action">
+
+                        <a
+                            href="/notices/4"
+                            class="btn btn-outline-primary"
+                        >
+                            View
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Pagination -->
+
+                <nav class="mt-5">
+
+                    <ul class="pagination justify-content-center">
+
+                        <li class="page-item disabled">
+
+                            <a class="page-link">
+                                Previous
+                            </a>
+
+                        </li>
+
+                        <li class="page-item active">
+
+                            <a class="page-link">
+                                1
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link">
+                                2
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link">
+                                3
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link">
+                                Next
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+
+
+            <!-- =========================
+                 SIDEBAR
+            ========================= -->
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+
+                <div class="notice-sidebar">
+
+                    <h4>
+                        Notice Categories
+                    </h4>
+
+
+                    <a href="#">
+                        <span>
+                            Public Notices
+                        </span>
+
+                        <span class="badge text-bg-primary">
+                            12
+                        </span>
+                    </a>
+
+
+                    <a href="#">
+                        <span>
+                            Vacancies
+                        </span>
+
+                        <span class="badge text-bg-primary">
+                            5
+                        </span>
+                    </a>
+
+
+                    <a href="#">
+                        <span>
+                            Tenders
+                        </span>
+
+                        <span class="badge text-bg-primary">
+                            4
+                        </span>
+                    </a>
+
+
+                    <a href="#">
+                        <span>
+                            Information
+                        </span>
+
+                        <span class="badge text-bg-primary">
+                            8
+                        </span>
+                    </a>
+
+
+                    <a href="#">
+                        <span>
+                            Announcements
+                        </span>
+
+                        <span class="badge text-bg-primary">
+                            7
+                        </span>
+                    </a>
+
+                </div>
+
+
+
+                <div class="download-box mt-4">
+
+                    <i class="bi bi-file-earmark-pdf"></i>
+
+                    <h5>
+                        Need a document?
+                    </h5>
+
+                    <p>
+                        Visit our downloads section to find
+                        forms, reports and other documents.
+                    </p>
+
+                    <a
+                        href="/downloads"
+                        class="btn btn-light"
+                    >
+                        Browse Downloads
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<%- include("../layouts/footer") %>
+
+<%- include("../layouts/scripts") %>

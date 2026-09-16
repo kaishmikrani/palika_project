@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= title || "Manage Wards" %></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+            <div class="admin-brand-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div>
+                <h5>Bishnu Palika</h5>
+                <small>Admin Panel</small>
+            </div>
+        </div>
+
+        <div class="admin-menu-title">MAIN MENU</div>
+
+        <nav class="admin-menu">
+
+            <a href="/admin/dashboard" class="admin-menu-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/admin/notices" class="admin-menu-link">
+                <i class="bi bi-megaphone-fill"></i>
+                <span>Notices</span>
+            </a>
+
+            <a href="/admin/news" class="admin-menu-link">
+                <i class="bi bi-newspaper"></i>
+                <span>News & Events</span>
+            </a>
+
+            <a href="/admin/services" class="admin-menu-link">
+                <i class="bi bi-person-workspace"></i>
+                <span>Services</span>
+            </a>
+
+            <a href="/admin/wards" class="admin-menu-link active">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Wards</span>
+            </a>
+
+            <a href="/admin/downloads" class="admin-menu-link">
+                <i class="bi bi-download"></i>
+                <span>Downloads</span>
+            </a>
+
+            <a href="/admin/gallery" class="admin-menu-link">
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="/admin/slider" class="admin-menu-link">
+                <i class="bi bi-sliders"></i>
+                <span>Homepage Slider</span>
+            </a>
+
+            <div class="admin-menu-title">SETTINGS</div>
+
+            <a href="/admin/profile" class="admin-menu-link">
+                <i class="bi bi-person-circle"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="/admin/settings" class="admin-menu-link">
+                <i class="bi bi-gear-fill"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="/" target="_blank" class="admin-menu-link">
+                <i class="bi bi-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+            <a href="/admin/login">
+                <i class="bi bi-box-arrow-left"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button
+                    class="admin-mobile-menu"
+                    onclick="toggleAdminSidebar()"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div>
+                    <h4>Wards</h4>
+                    <p>Manage municipality ward information</p>
+                </div>
+
+            </div>
+
+            <div class="admin-user">
+
+                <div class="admin-user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Super Admin</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="admin-content">
+
+            <!-- PAGE HEADER -->
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+
+                <div>
+
+                    <div class="admin-breadcrumb mb-2">
+
+                        <a href="/admin/dashboard">
+                            Dashboard
+                        </a>
+
+                        <i class="bi bi-chevron-right"></i>
+
+                        <span>Wards</span>
+
+                    </div>
+
+                    <h3 class="fw-bold mb-1">
+                        Municipality Wards
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Manage ward details and contact information.
+                    </p>
+
+                </div>
+
+                <a href="/admin/wards/add" class="btn btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i>
+                    Add Ward
+                </a>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="row g-3 mb-4">
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-primary-subtle text-primary">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-muted">
+                                Total Wards
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                12
+                            </h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-success-subtle text-success">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-muted">
+                                Published
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                12
+                            </h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-warning-subtle text-warning">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-muted">
+                                Draft
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                0
+                            </h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-info-subtle text-info">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-muted">
+                                Ward Contacts
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                12
+                            </h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WARD MANAGEMENT -->
+
+            <div class="admin-section-card">
+
+                <!-- FILTER -->
+
+                <div class="row g-3 mb-4">
+
+                    <div class="col-lg-6">
+
+                        <label class="form-label">
+                            Search Ward
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search by ward number, name or chairperson..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-3">
+
+                        <label class="form-label">
+                            Status
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                All Status
+                            </option>
+
+                            <option>
+                                Published
+                            </option>
+
+                            <option>
+                                Draft
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-lg-3 d-flex align-items-end">
+
+                        <button class="btn btn-outline-secondary w-100">
+
+                            <i class="bi bi-funnel me-1"></i>
+
+                            Filter
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+
+                <div class="table-responsive">
+
+                    <table class="table admin-management-table align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Ward</th>
+                                <th>Chairperson</th>
+                                <th>Contact</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- WARD 1 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="ward-admin-item">
+
+                                        <div class="ward-number-box">
+                                            01
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Ward No. 1
+                                            </strong>
+
+                                            <small>
+                                                Bishnu Rural Municipality
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        Ram Bahadur
+                                    </strong>
+
+                                    <small class="d-block text-muted">
+                                        Ward Chairperson
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span>
+                                        98XXXXXXXX
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="text-muted">
+                                        Ward Office
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge text-bg-success">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/wards/1"
+                                            target="_blank"
+                                            class="btn btn-sm btn-outline-secondary"
+                                            title="View"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/wards/edit/1"
+                                            class="btn btn-sm btn-outline-primary"
+                                            title="Edit"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteWard(1)"
+                                            title="Delete"
+                                        >
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- WARD 2 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="ward-admin-item">
+
+                                        <div class="ward-number-box">
+                                            02
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Ward No. 2
+                                            </strong>
+
+                                            <small>
+                                                Bishnu Rural Municipality
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        Hari Prasad
+                                    </strong>
+
+                                    <small class="d-block text-muted">
+                                        Ward Chairperson
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    98XXXXXXXX
+                                </td>
+
+
+                                <td>
+                                    <span class="text-muted">
+                                        Ward Office
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge text-bg-success">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/wards/2"
+                                            target="_blank"
+                                            class="btn btn-sm btn-outline-secondary"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/wards/edit/2"
+                                            class="btn btn-sm btn-outline-primary"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteWard(2)"
+                                        >
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- WARD 3 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="ward-admin-item">
+
+                                        <div class="ward-number-box">
+                                            03
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Ward No. 3
+                                            </strong>
+
+                                            <small>
+                                                Bishnu Rural Municipality
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        Krishna Lal
+                                    </strong>
+
+                                    <small class="d-block text-muted">
+                                        Ward Chairperson
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    98XXXXXXXX
+                                </td>
+
+
+                                <td>
+                                    <span class="text-muted">
+                                        Ward Office
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge text-bg-success">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/wards/3"
+                                            target="_blank"
+                                            class="btn btn-sm btn-outline-secondary"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/wards/edit/3"
+                                            class="btn btn-sm btn-outline-primary"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteWard(3)"
+                                        >
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- WARD 4 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="ward-admin-item">
+
+                                        <div class="ward-number-box">
+                                            04
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Ward No. 4
+                                            </strong>
+
+                                            <small>
+                                                Bishnu Rural Municipality
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        Sita Ram
+                                    </strong>
+
+                                    <small class="d-block text-muted">
+                                        Ward Chairperson
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    98XXXXXXXX
+                                </td>
+
+
+                                <td>
+                                    <span class="text-muted">
+                                        Ward Office
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge text-bg-success">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/wards/4"
+                                            target="_blank"
+                                            class="btn btn-sm btn-outline-secondary"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/wards/edit/4"
+                                            class="btn btn-sm btn-outline-primary"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteWard(4)"
+                                        >
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- WARD 5 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="ward-admin-item">
+
+                                        <div class="ward-number-box">
+                                            05
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Ward No. 5
+                                            </strong>
+
+                                            <small>
+                                                Bishnu Rural Municipality
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        Mohan Yadav
+                                    </strong>
+
+                                    <small class="d-block text-muted">
+                                        Ward Chairperson
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    98XXXXXXXX
+                                </td>
+
+
+                                <td>
+                                    <span class="text-muted">
+                                        Ward Office
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="badge text-bg-success">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/wards/5"
+                                            target="_blank"
+                                            class="btn btn-sm btn-outline-secondary"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/wards/edit/5"
+                                            class="btn btn-sm btn-outline-primary"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteWard(5)"
+                                        >
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+
+                <div class="admin-pagination">
+
+                    <span>
+                        Showing 1 to 5 of 12 wards
+                    </span>
+
+                    <nav>
+
+                        <ul class="pagination pagination-sm mb-0">
+
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">
+                                    Previous
+                                </a>
+                            </li>
+
+                            <li class="page-item active">
+                                <a class="page-link" href="#">
+                                    1
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    2
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    3
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    Next
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+
+function deleteWard(id) {
+
+    const confirmed = confirm(
+        `Are you sure you want to delete Ward No. ${id}?`
+    );
+
+    if (confirmed) {
+
+        alert(
+            "Frontend demo only. Ward data is not deleted because the backend is not connected yet."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

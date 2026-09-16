@@ -1,0 +1,472 @@
+<%- include("../layouts/header") %>
+<%- include("../layouts/navbar") %>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="page-header-content">
+            <span class="page-header-label">
+                <i class="bi bi-people-fill"></i>
+                Municipality Staff
+            </span>
+
+            <h1>Employees</h1>
+
+            <p>
+                Details of officials and employees working at Bishnu Rural Municipality.
+            </p>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Employees
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<!-- Employee Page -->
+<section class="employees-section py-5">
+    <div class="container">
+
+        <!-- Intro -->
+        <div class="row align-items-center mb-5">
+
+            <div class="col-lg-8">
+                <span class="section-label">
+                    <i class="bi bi-building"></i>
+                    Municipality Human Resources
+                </span>
+
+                <h2 class="section-title mt-2">
+                    Our Employees
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Meet the officials and staff members working across
+                    different sections of Bishnu Rural Municipality.
+                    Employees are categorized according to their departments
+                    and professional responsibilities.
+                </p>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="employee-total-card">
+                    <div class="employee-total-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Employees</span>
+                        <strong><%= employees.length %></strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Search -->
+        <div class="employee-filter-box mb-4">
+
+            <div class="row g-3 align-items-center">
+
+                <div class="col-lg-6">
+                    <div class="employee-search">
+                        <i class="bi bi-search"></i>
+
+                        <input
+                            type="text"
+                            id="employeeSearch"
+                            class="form-control"
+                            placeholder="Search employee, position or profession..."
+                        >
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="text-lg-end">
+                        <span class="employee-result-text">
+                            Showing <strong id="employeeCount"><%= employees.length %></strong>
+                            employees
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Categories -->
+        <div class="employee-category-wrapper mb-5">
+
+            <button
+                class="employee-category-btn active"
+                data-category="all"
+            >
+                <i class="bi bi-grid-fill"></i>
+                All Employees
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="Administration"
+            >
+                <i class="bi bi-person-workspace"></i>
+                Administration
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="Health"
+            >
+                <i class="bi bi-heart-pulse-fill"></i>
+                Health
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="Education"
+            >
+                <i class="bi bi-mortarboard-fill"></i>
+                Education
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="Engineering"
+            >
+                <i class="bi bi-building-fill"></i>
+                Engineering
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="Finance"
+            >
+                <i class="bi bi-cash-stack"></i>
+                Finance
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="Agriculture"
+            >
+                <i class="bi bi-flower1"></i>
+                Agriculture
+            </button>
+
+            <button
+                class="employee-category-btn"
+                data-category="IT & Records"
+            >
+                <i class="bi bi-pc-display"></i>
+                IT & Records
+            </button>
+
+        </div>
+
+
+        <!-- Employee Cards -->
+        <div class="row g-4" id="employeeGrid">
+
+            <% employees.forEach(employee => { %>
+
+                <div
+                    class="col-xl-3 col-lg-4 col-md-6 employee-item"
+                    data-category="<%= employee.category %>"
+                    data-search="
+                        <%= employee.name %>
+                        <%= employee.position %>
+                        <%= employee.profession %>
+                        <%= employee.category %>
+                    "
+                >
+
+                    <div class="employee-card">
+
+                        <!-- Image -->
+                        <div class="employee-image-wrapper">
+
+                            <img
+                                src="<%= employee.image %>"
+                                alt="<%= employee.name %>"
+                                class="employee-image"
+                                onerror="this.src='https://ui-avatars.com/api/?name=<%= encodeURIComponent(employee.name) %>&background=eaf2ff&color=0d6efd&size=500'"
+                            >
+
+                            <span class="employee-category-badge">
+                                <%= employee.category %>
+                            </span>
+
+                        </div>
+
+
+                        <!-- Content -->
+                        <div class="employee-card-body">
+
+                            <h5>
+                                <%= employee.name %>
+                            </h5>
+
+                            <div class="employee-position">
+                                <i class="bi bi-briefcase-fill"></i>
+                                <%= employee.position %>
+                            </div>
+
+                            <div class="employee-profession">
+                                <i class="bi bi-award-fill"></i>
+                                <%= employee.profession %>
+                            </div>
+
+                            <p>
+                                <%= employee.responsibility %>
+                            </p>
+
+                            <div class="employee-office">
+                                <i class="bi bi-building"></i>
+                                <span>
+                                    <%= employee.office %>
+                                </span>
+                            </div>
+
+                            <div class="employee-card-footer">
+
+                                <a
+                                    href="/employees/<%= employee.id %>"
+                                    class="btn btn-primary btn-sm"
+                                >
+                                    View Details
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+
+                                <a
+                                    href="tel:<%= employee.phone %>"
+                                    class="employee-call-btn"
+                                    title="Call"
+                                >
+                                    <i class="bi bi-telephone-fill"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+
+        <!-- No Result -->
+        <div
+            id="employeeNoResult"
+            class="employee-no-result d-none"
+        >
+            <div class="employee-no-result-icon">
+                <i class="bi bi-person-x"></i>
+            </div>
+
+            <h4>No Employee Found</h4>
+
+            <p>
+                No employee matches your search or selected category.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="resetEmployeeFilter"
+            >
+                <i class="bi bi-arrow-counterclockwise"></i>
+                Reset Filter
+            </button>
+        </div>
+
+
+        <!-- Information -->
+        <div class="employee-information mt-5">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <div class="d-flex gap-3">
+
+                        <div class="employee-info-icon">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </div>
+
+                        <div>
+                            <h5>Employee Information</h5>
+
+                            <p class="mb-0 text-muted">
+                                The information displayed on this page is intended
+                                to help citizens identify the responsible section
+                                and contact the appropriate municipal employee.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+
+                    <a
+                        href="/contact"
+                        class="btn btn-primary"
+                    >
+                        Contact Municipality
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const categoryButtons =
+        document.querySelectorAll(".employee-category-btn");
+
+    const employeeItems =
+        document.querySelectorAll(".employee-item");
+
+    const searchInput =
+        document.getElementById("employeeSearch");
+
+    const employeeCount =
+        document.getElementById("employeeCount");
+
+    const noResult =
+        document.getElementById("employeeNoResult");
+
+    const resetButton =
+        document.getElementById("resetEmployeeFilter");
+
+    let selectedCategory = "all";
+
+
+    function filterEmployees() {
+
+        const searchValue =
+            searchInput.value.trim().toLowerCase();
+
+        let visibleCount = 0;
+
+
+        employeeItems.forEach(function (item) {
+
+            const category =
+                item.dataset.category;
+
+            const searchText =
+                item.dataset.search.toLowerCase();
+
+            const categoryMatch =
+                selectedCategory === "all" ||
+                category === selectedCategory;
+
+            const searchMatch =
+                searchText.includes(searchValue);
+
+
+            if (categoryMatch && searchMatch) {
+
+                item.classList.remove("d-none");
+
+                visibleCount++;
+
+            } else {
+
+                item.classList.add("d-none");
+
+            }
+
+        });
+
+
+        employeeCount.textContent = visibleCount;
+
+
+        if (visibleCount === 0) {
+
+            noResult.classList.remove("d-none");
+
+        } else {
+
+            noResult.classList.add("d-none");
+
+        }
+
+    }
+
+
+    categoryButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            categoryButtons.forEach(function (btn) {
+                btn.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            selectedCategory =
+                this.dataset.category;
+
+            filterEmployees();
+
+        });
+
+    });
+
+
+    searchInput.addEventListener(
+        "input",
+        filterEmployees
+    );
+
+
+    resetButton.addEventListener("click", function () {
+
+        selectedCategory = "all";
+
+        searchInput.value = "";
+
+        categoryButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+        });
+
+        document
+            .querySelector('[data-category="all"]')
+            .classList.add("active");
+
+        filterEmployees();
+
+    });
+
+});
+</script>
+
+
+<%- include("../layouts/footer") %>
+<%- include("../layouts/scripts") %>

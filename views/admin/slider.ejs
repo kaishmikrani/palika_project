@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= title || "Manage Homepage Slider" %></title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div>
+                <h5>Bishnu Palika</h5>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="admin-menu">
+
+            <a href="/admin/dashboard" class="admin-menu-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/admin/notices" class="admin-menu-link">
+                <i class="bi bi-megaphone-fill"></i>
+                <span>Notices</span>
+            </a>
+
+            <a href="/admin/news" class="admin-menu-link">
+                <i class="bi bi-newspaper"></i>
+                <span>News & Events</span>
+            </a>
+
+            <a href="/admin/services" class="admin-menu-link">
+                <i class="bi bi-person-workspace"></i>
+                <span>Services</span>
+            </a>
+
+            <a href="/admin/wards" class="admin-menu-link">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Wards</span>
+            </a>
+
+            <a href="/admin/downloads" class="admin-menu-link">
+                <i class="bi bi-download"></i>
+                <span>Downloads</span>
+            </a>
+
+            <a href="/admin/gallery" class="admin-menu-link">
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="/admin/slider" class="admin-menu-link active">
+                <i class="bi bi-sliders"></i>
+                <span>Homepage Slider</span>
+            </a>
+
+
+            <div class="admin-menu-title">
+                SETTINGS
+            </div>
+
+
+            <a href="/admin/profile" class="admin-menu-link">
+                <i class="bi bi-person-circle"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="/admin/settings" class="admin-menu-link">
+                <i class="bi bi-gear-fill"></i>
+                <span>Settings</span>
+            </a>
+
+            <a
+                href="/"
+                target="_blank"
+                class="admin-menu-link"
+            >
+                <i class="bi bi-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="/admin/login">
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- TOPBAR -->
+
+        <div class="admin-topbar">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button
+                    type="button"
+                    class="admin-mobile-menu"
+                    onclick="toggleAdminSidebar()"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div>
+
+                    <h4>
+                        Homepage Slider
+                    </h4>
+
+                    <p>
+                        Manage images displayed on the homepage
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div class="d-none d-sm-block">
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Super Admin
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="admin-content">
+
+
+            <!-- BREADCRUMB -->
+
+            <div class="admin-breadcrumb mb-4">
+
+                <a href="/admin/dashboard">
+                    Dashboard
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    Homepage Slider
+                </span>
+
+            </div>
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+
+                <div>
+
+                    <h4 class="fw-bold mb-1">
+                        Slider Management
+                    </h4>
+
+                    <p class="text-muted mb-0">
+                        Manage important images shown on the homepage.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/admin/slider/add"
+                    class="btn btn-primary"
+                >
+
+                    <i class="bi bi-plus-lg me-1"></i>
+
+                    Add Slider
+
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 STATS
+            ================================================== -->
+
+            <div class="row g-4 mb-4">
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-primary-subtle text-primary">
+
+                            <i class="bi bi-images"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Total Slides
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                5
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-success-subtle text-success">
+
+                            <i class="bi bi-check-circle"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Active
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                4
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-warning-subtle text-warning">
+
+                            <i class="bi bi-eye-slash"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Inactive
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                1
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="admin-stat-card">
+
+                        <div class="admin-stat-icon bg-info-subtle text-info">
+
+                            <i class="bi bi-arrow-down-up"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Auto Slide
+                            </small>
+
+                            <h4 class="fw-bold mb-0">
+                                5 sec
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SLIDER SETTINGS
+            ================================================== -->
+
+            <div class="admin-section-card mb-4">
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <h5>
+                            Slider Settings
+                        </h5>
+
+                        <p>
+                            Basic homepage slider configuration.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Auto Slide
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Every 5 seconds
+                            </option>
+
+                            <option>
+                                Every 4 seconds
+                            </option>
+
+                            <option>
+                                Every 6 seconds
+                            </option>
+
+                            <option>
+                                Every 8 seconds
+                            </option>
+
+                            <option>
+                                Disabled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Transition
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Fade
+                            </option>
+
+                            <option>
+                                Slide
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Show Indicators
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Yes
+                            </option>
+
+                            <option>
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="alert alert-info mt-4 mb-0">
+
+                    <i class="bi bi-info-circle me-2"></i>
+
+                    These settings are currently for UI demonstration.
+                    They will be connected to the backend later.
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SLIDE LIST
+            ================================================== -->
+
+            <div class="admin-section-card">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <h5>
+                            Homepage Slides
+                        </h5>
+
+                        <p>
+                            Drag/order controls will be connected during backend development.
+                        </p>
+
+                    </div>
+
+
+                    <span class="badge bg-light text-dark border">
+                        5 Slides
+                    </span>
+
+                </div>
+
+
+                <div class="slider-admin-list">
+
+
+                    <!-- SLIDE 1 -->
+
+                    <div class="slider-admin-item">
+
+                        <div class="slider-drag-handle">
+                            <i class="bi bi-grip-vertical"></i>
+                        </div>
+
+
+                        <div class="slider-admin-number">
+                            01
+                        </div>
+
+
+                        <div class="slider-admin-image">
+
+                            <img
+                                src="/images/slide-1.jpg"
+                                alt="Bishnu Palika Slide 1"
+                            >
+
+                        </div>
+
+
+                        <div class="slider-admin-info">
+
+                            <span class="admin-category-badge">
+                                Active
+                            </span>
+
+                            <h6>
+                                Welcome to Bishnu Rural Municipality
+                            </h6>
+
+                            <small>
+                                Main homepage welcome banner
+                            </small>
+
+                        </div>
+
+
+                        <div class="slider-admin-order">
+
+                            <small>
+                                Order
+                            </small>
+
+                            <strong>
+                                1
+                            </strong>
+
+                        </div>
+
+
+                        <div class="slider-admin-status">
+
+                            <span class="badge bg-success-subtle text-success">
+                                Active
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                onclick="previewSlide('/images/slide-1.jpg','Welcome to Bishnu Rural Municipality')"
+                                title="Preview"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                            <a
+                                href="/admin/slider/edit/1"
+                                class="btn btn-sm btn-outline-secondary"
+                                title="Edit"
+                            >
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="deleteSlide('Welcome to Bishnu Rural Municipality')"
+                                title="Delete"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SLIDE 2 -->
+
+                    <div class="slider-admin-item">
+
+                        <div class="slider-drag-handle">
+                            <i class="bi bi-grip-vertical"></i>
+                        </div>
+
+
+                        <div class="slider-admin-number">
+                            02
+                        </div>
+
+
+                        <div class="slider-admin-image">
+
+                            <img
+                                src="/images/slide-2.jpg"
+                                alt="Bishnu Palika Slide 2"
+                            >
+
+                        </div>
+
+
+                        <div class="slider-admin-info">
+
+                            <span class="admin-category-badge">
+                                Active
+                            </span>
+
+                            <h6>
+                                Development and Progress
+                            </h6>
+
+                            <small>
+                                Municipality development highlight
+                            </small>
+
+                        </div>
+
+
+                        <div class="slider-admin-order">
+
+                            <small>
+                                Order
+                            </small>
+
+                            <strong>
+                                2
+                            </strong>
+
+                        </div>
+
+
+                        <div class="slider-admin-status">
+
+                            <span class="badge bg-success-subtle text-success">
+                                Active
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                onclick="previewSlide('/images/slide-2.jpg','Development and Progress')"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                            <a
+                                href="/admin/slider/edit/2"
+                                class="btn btn-sm btn-outline-secondary"
+                            >
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="deleteSlide('Development and Progress')"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SLIDE 3 -->
+
+                    <div class="slider-admin-item">
+
+                        <div class="slider-drag-handle">
+                            <i class="bi bi-grip-vertical"></i>
+                        </div>
+
+
+                        <div class="slider-admin-number">
+                            03
+                        </div>
+
+
+                        <div class="slider-admin-image">
+
+                            <img
+                                src="/images/slide-3.jpg"
+                                alt="Bishnu Palika Slide 3"
+                            >
+
+                        </div>
+
+
+                        <div class="slider-admin-info">
+
+                            <span class="admin-category-badge">
+                                Active
+                            </span>
+
+                            <h6>
+                                Better Services for Citizens
+                            </h6>
+
+                            <small>
+                                Citizen service promotion banner
+                            </small>
+
+                        </div>
+
+
+                        <div class="slider-admin-order">
+
+                            <small>
+                                Order
+                            </small>
+
+                            <strong>
+                                3
+                            </strong>
+
+                        </div>
+
+
+                        <div class="slider-admin-status">
+
+                            <span class="badge bg-success-subtle text-success">
+                                Active
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                onclick="previewSlide('/images/slide-3.jpg','Better Services for Citizens')"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                            <a
+                                href="/admin/slider/edit/3"
+                                class="btn btn-sm btn-outline-secondary"
+                            >
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="deleteSlide('Better Services for Citizens')"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SLIDE 4 -->
+
+                    <div class="slider-admin-item">
+
+                        <div class="slider-drag-handle">
+                            <i class="bi bi-grip-vertical"></i>
+                        </div>
+
+
+                        <div class="slider-admin-number">
+                            04
+                        </div>
+
+
+                        <div class="slider-admin-image">
+
+                            <img
+                                src="/images/slide-4.jpg"
+                                alt="Bishnu Palika Slide 4"
+                            >
+
+                        </div>
+
+
+                        <div class="slider-admin-info">
+
+                            <span class="admin-category-badge">
+                                Active
+                            </span>
+
+                            <h6>
+                                Connected and Digital Municipality
+                            </h6>
+
+                            <small>
+                                Digital service banner
+                            </small>
+
+                        </div>
+
+
+                        <div class="slider-admin-order">
+
+                            <small>
+                                Order
+                            </small>
+
+                            <strong>
+                                4
+                            </strong>
+
+                        </div>
+
+
+                        <div class="slider-admin-status">
+
+                            <span class="badge bg-success-subtle text-success">
+                                Active
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                onclick="previewSlide('/images/slide-4.jpg','Connected and Digital Municipality')"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                            <a
+                                href="/admin/slider/edit/4"
+                                class="btn btn-sm btn-outline-secondary"
+                            >
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="deleteSlide('Connected and Digital Municipality')"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SLIDE 5 -->
+
+                    <div class="slider-admin-item inactive">
+
+                        <div class="slider-drag-handle">
+                            <i class="bi bi-grip-vertical"></i>
+                        </div>
+
+
+                        <div class="slider-admin-number">
+                            05
+                        </div>
+
+
+                        <div class="slider-admin-image">
+
+                            <img
+                                src="/images/slide-5.jpg"
+                                alt="Bishnu Palika Slide 5"
+                            >
+
+                        </div>
+
+
+                        <div class="slider-admin-info">
+
+                            <span class="admin-category-badge inactive-badge">
+                                Inactive
+                            </span>
+
+                            <h6>
+                                Green and Clean Bishnu
+                            </h6>
+
+                            <small>
+                                Environment and nature banner
+                            </small>
+
+                        </div>
+
+
+                        <div class="slider-admin-order">
+
+                            <small>
+                                Order
+                            </small>
+
+                            <strong>
+                                5
+                            </strong>
+
+                        </div>
+
+
+                        <div class="slider-admin-status">
+
+                            <span class="badge bg-secondary-subtle text-secondary">
+                                Inactive
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                onclick="previewSlide('/images/slide-5.jpg','Green and Clean Bishnu')"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                            <a
+                                href="/admin/slider/edit/5"
+                                class="btn btn-sm btn-outline-secondary"
+                            >
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                onclick="deleteSlide('Green and Clean Bishnu')"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="alert alert-info mt-4 mb-0">
+
+                    <i class="bi bi-info-circle me-2"></i>
+
+                    <strong>Tip:</strong>
+                    The drag handles are prepared for slide ordering.
+                    Actual drag-and-drop ordering will be implemented with
+                    backend/database functionality later.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     PREVIEW MODAL
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="sliderPreviewModal"
+    tabindex="-1"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Slider Preview
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
+            </div>
+
+
+            <div class="modal-body p-0">
+
+                <div class="slider-modal-preview">
+
+                    <img
+                        id="sliderPreviewImage"
+                        src=""
+                        alt="Slider Preview"
+                    >
+
+                    <div class="slider-modal-caption">
+
+                        <h5 id="sliderPreviewTitle">
+                            Slider Title
+                        </h5>
+
+                        <p>
+                            Homepage slider preview
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+
+/* =========================================================
+   SLIDER PREVIEW
+========================================================= */
+
+function previewSlide(image, title) {
+
+    document
+        .getElementById("sliderPreviewImage")
+        .src = image;
+
+    document
+        .getElementById("sliderPreviewTitle")
+        .textContent = title;
+
+
+    const modal =
+        new bootstrap.Modal(
+            document.getElementById("sliderPreviewModal")
+        );
+
+    modal.show();
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+function deleteSlide(title) {
+
+    const confirmed =
+        confirm(
+            `Are you sure you want to delete "${title}"?`
+        );
+
+
+    if (confirmed) {
+
+        alert(
+            "Frontend demo: this slider would be deleted after backend integration."
+        );
+
+    }
+
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

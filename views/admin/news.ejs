@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= title %> | Bishnu Rural Municipality</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="admin-page">
+
+    <!-- ========================= -->
+    <!-- SIDEBAR -->
+    <!-- ========================= -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div>
+                <h5>Bishnu Palika</h5>
+                <small>Admin Panel</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav class="admin-menu">
+
+            <a href="/admin/dashboard" class="admin-menu-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/admin/notices" class="admin-menu-link">
+                <i class="bi bi-megaphone-fill"></i>
+                <span>Notices</span>
+            </a>
+
+            <a href="/admin/news" class="admin-menu-link active">
+                <i class="bi bi-newspaper"></i>
+                <span>News & Events</span>
+            </a>
+
+            <a href="/admin/services" class="admin-menu-link">
+                <i class="bi bi-person-workspace"></i>
+                <span>Services</span>
+            </a>
+
+            <a href="/admin/wards" class="admin-menu-link">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Wards</span>
+            </a>
+
+            <a href="/admin/downloads" class="admin-menu-link">
+                <i class="bi bi-download"></i>
+                <span>Downloads</span>
+            </a>
+
+            <a href="/admin/gallery" class="admin-menu-link">
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="/admin/slider" class="admin-menu-link">
+                <i class="bi bi-sliders"></i>
+                <span>Homepage Slider</span>
+            </a>
+
+
+            <div class="admin-menu-title">
+                SETTINGS
+            </div>
+
+            <a href="/admin/profile" class="admin-menu-link">
+                <i class="bi bi-person-circle"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="/admin/settings" class="admin-menu-link">
+                <i class="bi bi-gear-fill"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="/" class="admin-menu-link" target="_blank">
+                <i class="bi bi-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="/admin/login">
+                <i class="bi bi-box-arrow-left"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- MAIN -->
+    <!-- ========================= -->
+
+    <main class="admin-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="admin-topbar">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button
+                    class="admin-mobile-menu"
+                    onclick="toggleAdminSidebar()"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div>
+                    <h4>News & Events</h4>
+
+                    <p>
+                        Manage municipality news and upcoming events
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Super Admin</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="admin-content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="admin-page-header">
+
+                <div>
+
+                    <h3>
+                        News & Events Management
+                    </h3>
+
+                    <p>
+                        Create, edit and manage website news and events.
+                    </p>
+
+                </div>
+
+                <a
+                    href="/admin/news/add"
+                    class="btn btn-primary"
+                >
+                    <i class="bi bi-plus-lg me-1"></i>
+                    Add News & Event
+                </a>
+
+            </div>
+
+
+            <!-- FILTER CARD -->
+
+            <div class="admin-section-card mb-4">
+
+                <div class="row g-3 align-items-end">
+
+                    <div class="col-lg-4">
+
+                        <label class="form-label">
+                            Search
+                        </label>
+
+                        <div class="admin-search">
+
+                            <i class="bi bi-search"></i>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search news or events..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        <select class="form-select">
+
+                            <option>All Categories</option>
+                            <option>News</option>
+                            <option>Event</option>
+                            <option>Development</option>
+                            <option>Announcement</option>
+                            <option>Program</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <label class="form-label">
+                            Status
+                        </label>
+
+                        <select class="form-select">
+
+                            <option>All Status</option>
+                            <option>Published</option>
+                            <option>Draft</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <label class="form-label">
+                            Featured
+                        </label>
+
+                        <select class="form-select">
+
+                            <option>All</option>
+                            <option>Featured</option>
+                            <option>Not Featured</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-lg-2">
+
+                        <button class="btn btn-outline-primary w-100">
+
+                            <i class="bi bi-funnel me-1"></i>
+                            Filter
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEWS TABLE -->
+
+            <div class="admin-section-card">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <h5>
+                            News & Events
+                        </h5>
+
+                        <p>
+                            Showing 6 sample records
+                        </p>
+
+                    </div>
+
+
+                    <button class="btn btn-outline-secondary btn-sm">
+
+                        <i class="bi bi-download me-1"></i>
+                        Export
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table admin-management-table align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    News / Event
+                                </th>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Featured
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th class="text-end">
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- ROW 1 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="news-admin-item">
+
+                                        <img
+                                            src="/images/news-1.jpg"
+                                            alt="News"
+                                            class="news-admin-thumbnail"
+                                        >
+
+                                        <div>
+
+                                            <strong>
+                                                Municipality Development Program
+                                            </strong>
+
+                                            <small>
+                                                Important development activities...
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="admin-category-badge">
+                                        Development
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    12 Sep 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="featured-badge">
+                                        <i class="bi bi-star-fill"></i>
+                                        Featured
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge published">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/news/1"
+                                            target="_blank"
+                                            class="btn btn-outline-secondary btn-sm"
+                                            title="View"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/news/edit/1"
+                                            class="btn btn-outline-primary btn-sm"
+                                            title="Edit"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button
+                                            class="btn btn-outline-danger btn-sm"
+                                            title="Delete"
+                                        >
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ROW 2 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="news-admin-item">
+
+                                        <img
+                                            src="/images/news-2.jpg"
+                                            alt="News"
+                                            class="news-admin-thumbnail"
+                                        >
+
+                                        <div>
+
+                                            <strong>
+                                                Public Interaction Program
+                                            </strong>
+
+                                            <small>
+                                                Public interaction program organized...
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="admin-category-badge">
+                                        Program
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    08 Sep 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="not-featured-badge">
+                                        No
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge published">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/news/2"
+                                            target="_blank"
+                                            class="btn btn-outline-secondary btn-sm"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/news/edit/2"
+                                            class="btn btn-outline-primary btn-sm"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ROW 3 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="news-admin-item">
+
+                                        <img
+                                            src="/images/news-3.jpg"
+                                            alt="News"
+                                            class="news-admin-thumbnail"
+                                        >
+
+                                        <div>
+
+                                            <strong>
+                                                Health Awareness Campaign
+                                            </strong>
+
+                                            <small>
+                                                Awareness program for local citizens...
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="admin-category-badge">
+                                        Event
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    03 Sep 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="featured-badge">
+                                        <i class="bi bi-star-fill"></i>
+                                        Featured
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge published">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/news/3"
+                                            target="_blank"
+                                            class="btn btn-outline-secondary btn-sm"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/news/edit/3"
+                                            class="btn btn-outline-primary btn-sm"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ROW 4 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="news-admin-item">
+
+                                        <img
+                                            src="/images/news-4.jpg"
+                                            alt="News"
+                                            class="news-admin-thumbnail"
+                                        >
+
+                                        <div>
+
+                                            <strong>
+                                                Road Construction Update
+                                            </strong>
+
+                                            <small>
+                                                Latest update regarding road construction...
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="admin-category-badge">
+                                        News
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    28 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="not-featured-badge">
+                                        No
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge published">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/news/4"
+                                            target="_blank"
+                                            class="btn btn-outline-secondary btn-sm"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/news/edit/4"
+                                            class="btn btn-outline-primary btn-sm"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ROW 5 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="news-admin-item">
+
+                                        <img
+                                            src="/images/news-5.jpg"
+                                            alt="News"
+                                            class="news-admin-thumbnail"
+                                        >
+
+                                        <div>
+
+                                            <strong>
+                                                Agricultural Support Program
+                                            </strong>
+
+                                            <small>
+                                                Information for local farmers...
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="admin-category-badge">
+                                        Announcement
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    22 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="not-featured-badge">
+                                        No
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge draft">
+                                        Draft
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/admin/news/edit/5"
+                                            class="btn btn-outline-primary btn-sm"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ROW 6 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="news-admin-item">
+
+                                        <img
+                                            src="/images/news-6.jpg"
+                                            alt="News"
+                                            class="news-admin-thumbnail"
+                                        >
+
+                                        <div>
+
+                                            <strong>
+                                                Municipal Council Meeting
+                                            </strong>
+
+                                            <small>
+                                                Important meeting and discussion...
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="admin-category-badge">
+                                        Event
+                                    </span>
+                                </td>
+
+
+                                <td>
+                                    18 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="featured-badge">
+                                        <i class="bi bi-star-fill"></i>
+                                        Featured
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge published">
+                                        Published
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="admin-actions">
+
+                                        <a
+                                            href="/news/6"
+                                            target="_blank"
+                                            class="btn btn-outline-secondary btn-sm"
+                                        >
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a
+                                            href="/admin/news/edit/6"
+                                            class="btn btn-outline-primary btn-sm"
+                                        >
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+
+                <div class="admin-pagination">
+
+                    <div>
+                        Showing 1 to 6 of 18 news & events
+                    </div>
+
+
+                    <nav>
+
+                        <ul class="pagination pagination-sm mb-0">
+
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">
+                                    Previous
+                                </a>
+                            </li>
+
+                            <li class="page-item active">
+                                <a class="page-link" href="#">
+                                    1
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    2
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    3
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    Next
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<script>
+
+function toggleAdminSidebar() {
+
+    document
+        .querySelector(".admin-sidebar")
+        .classList.toggle("show");
+
+}
+
+</script>
+
+</body>
+
+</html>
