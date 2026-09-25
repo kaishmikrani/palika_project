@@ -163,6 +163,22 @@ const employees = [
         image: "/images/employee-10.jpg",
         qualification: "Bachelor's Degree",
         experience: "4 Years"
+    },
+    {
+        id: 11,
+        name: "MOhammad Ajad Mikrani",
+        position: "Education Branch Head",
+        category: "Education",
+        profession: "office administration",
+        responsibility:
+            "Oversees educational programs, school coordination, and  edicational initiatives within the municipality.",
+        office: "Education Branch",
+        ward: "Municipality Office",
+        phone: "9864064664",
+        email: "ito.bishnumun@gmail.com",
+        image: "/images/employees/amjad.jpeg",
+        qualification: "Bachelor's Degree",
+        experience: "4 Years"
     }
 ];
 
